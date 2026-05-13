@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useMemo } from 'react'
-import { m, useScroll, useTransform } from 'framer-motion'
+import { m, useMotionTemplate, useScroll, useTransform } from 'framer-motion'
 import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
@@ -12,6 +12,7 @@ export default function Hero() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 600], [0, 60])
   const blur = useTransform(scrollY, [0, 600], [0, 6])
+  const filter = useMotionTemplate`blur(${blur}px)`
 
   const socials = useMemo(
     () => [
@@ -101,7 +102,7 @@ export default function Hero() {
 
           <div className="relative lg:col-span-6">
             <m.div
-              style={{ y, filter: blur?.to((v) => `blur(${v}px)`) }}
+              style={{ y, filter }}
               className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-fuchsia-500/6 to-cyan-400/10" />
@@ -158,4 +159,3 @@ export default function Hero() {
     </section>
   )
 }
-
