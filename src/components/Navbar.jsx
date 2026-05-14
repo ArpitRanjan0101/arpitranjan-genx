@@ -51,7 +51,6 @@ export default function Navbar({ activeId }) {
                 </span>
                 <span className="text-xs">A</span>
               </span>
-              <span className="hidden sm:inline">Arpit Ranjan</span>
             </button>
 
             <nav className="hidden items-center gap-1 md:flex">
@@ -136,4 +135,3 @@ export default function Navbar({ activeId }) {
     </header>
   )
 }
-
