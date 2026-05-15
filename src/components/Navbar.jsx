@@ -16,14 +16,6 @@ export default function Navbar({ activeId }) {
   const items = useMemo(() => NAV_ITEMS, [])
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     if (isDesktop) setOpen(false)
@@ -34,10 +26,7 @@ export default function Navbar({ activeId }) {
       <Container className="pointer-events-auto">
         <div className="pt-4">
           <div
-            className={cn(
-              'relative flex items-center justify-between rounded-full px-4 py-3 ring-1 ring-white/10 backdrop-blur-md transition md:px-5',
-              scrolled ? 'bg-black/35 shadow-glow' : 'bg-black/15'
-            )}
+            className="relative flex items-center justify-between px-2 py-3 md:px-0"
           >
             <button
               type="button"
