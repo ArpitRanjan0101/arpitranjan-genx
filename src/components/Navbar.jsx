@@ -28,18 +28,7 @@ export default function Navbar({ activeId }) {
           <div
             className="relative flex items-center justify-between px-2 py-3 md:px-0"
           >
-            <button
-              type="button"
-              onClick={() => scrollToId('hero')}
-              className="group inline-flex items-center gap-2 rounded-xl px-2 py-1 text-sm font-semibold tracking-wide text-zinc-50"
-            >
-              <span className="relative grid h-8 w-8 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500/40 via-fuchsia-500/20 to-cyan-400/30 ring-1 ring-white/10">
-                <span className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                  <span className="absolute -inset-10 rotate-12 bg-white/10 blur-xl" />
-                </span>
-                <span className="text-xs">A</span>
-              </span>
-            </button>
+            <div className="w-11" aria-hidden="true" />
 
             <nav className="hidden flex-1 justify-center md:flex">
               <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
