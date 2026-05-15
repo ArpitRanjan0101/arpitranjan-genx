@@ -35,7 +35,7 @@ export default function Navbar({ activeId }) {
         <div className="pt-4">
           <div
             className={cn(
-              'relative flex items-center justify-between rounded-2xl px-4 py-3 ring-1 ring-white/10 backdrop-blur-md transition',
+              'relative flex items-center justify-between rounded-full px-4 py-3 ring-1 ring-white/10 backdrop-blur-md transition md:px-5',
               scrolled ? 'bg-black/35 shadow-glow' : 'bg-black/15'
             )}
           >
@@ -52,30 +52,33 @@ export default function Navbar({ activeId }) {
               </span>
             </button>
 
-            <nav className="hidden items-center gap-1 md:flex">
-              {items.map((it) => (
-                <button
-                  key={it.id}
-                  type="button"
-                  onClick={() => scrollToId(it.id)}
-                  className={cn(
-                    'relative rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:text-zinc-50',
-                    activeId === it.id && 'text-zinc-50'
-                  )}
-                >
-                  {activeId === it.id ? (
-                    <m.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-white/10 ring-1 ring-white/12"
-                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                    />
-                  ) : null}
-                  <span className="relative">{it.label}</span>
-                </button>
-              ))}
+            <nav className="hidden flex-1 justify-center md:flex">
+              <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
+                {items.map((it) => (
+                  <button
+                    key={it.id}
+                    type="button"
+                    onClick={() => scrollToId(it.id)}
+                    className={cn(
+                      'relative rounded-full px-4 py-2 text-sm text-zinc-300 transition hover:text-zinc-50',
+                      activeId === it.id && 'text-zinc-50'
+                    )}
+                  >
+                    {activeId === it.id ? (
+                      <m.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 rounded-full bg-white/10 ring-1 ring-white/12"
+                        transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                      />
+                    ) : null}
+                    <span className="relative">{it.label}</span>
+                  </button>
+                ))}
+              </div>
             </nav>
 
             <div className="flex items-center gap-2">
+              <div className="hidden w-11 md:block" />
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
@@ -123,4 +126,3 @@ export default function Navbar({ activeId }) {
     </header>
   )
 }
-
