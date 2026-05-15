@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { m, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX, FiArrowUpRight } from 'react-icons/fi'
+import { FiMenu, FiX } from 'react-icons/fi'
 import Container from '@/components/Container'
-import Button from '@/components/Button'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -77,17 +76,6 @@ export default function Navbar({ activeId }) {
             </nav>
 
             <div className="flex items-center gap-2">
-              <Button
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToId('contact')
-                }}
-                className="hidden md:inline-flex"
-              >
-                Let’s talk <FiArrowUpRight className="opacity-80" />
-              </Button>
-
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
@@ -122,7 +110,7 @@ export default function Navbar({ activeId }) {
                         )}
                       >
                         <span>{it.label}</span>
-                        <span className="text-xs text-zinc-400">↵</span>
+                        <span className="text-xs text-zinc-400">â†µ</span>
                       </button>
                     ))}
                   </div>
@@ -135,3 +123,4 @@ export default function Navbar({ activeId }) {
     </header>
   )
 }
+
