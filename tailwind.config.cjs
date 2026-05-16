@@ -18,6 +18,7 @@ module.exports = {
           'Apple Color Emoji',
           'Segoe UI Emoji'
         ],
+        caveat: ['Caveat', 'cursive'],
       },
       colors: {
         ink: {
@@ -57,4 +58,3 @@ module.exports = {
   },
   plugins: [],
 }
-
