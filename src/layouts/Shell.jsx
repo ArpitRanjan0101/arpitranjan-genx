@@ -10,6 +10,7 @@ export default function Shell({ children, activeId, ready, onReady }) {
   return (
     <div className="min-h-dvh bg-ink-950 text-zinc-100 selection:bg-indigo-500/30 selection:text-zinc-50">
       <Background />
+      <div className="site-frame" aria-hidden="true" />
       <Cursor />
 
       <AnimatePresence initial>
@@ -26,4 +27,3 @@ export default function Shell({ children, activeId, ready, onReady }) {
     </div>
   )
 }
-
