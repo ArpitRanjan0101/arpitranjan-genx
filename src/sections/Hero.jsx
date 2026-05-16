@@ -51,7 +51,7 @@ export default function Hero() {
 
             <m.p
               variants={fadeUp}
-              className="mt-5 max-w-xl text-pretty font-caveat text-2xl font-medium leading-snug text-zinc-300 sm:text-3xl"
+              className="mt-5 max-w-xl text-pretty font-caveat text-3xl font-medium leading-snug text-zinc-300 sm:text-4xl"
             >
               Motion-first, performance-conscious web experiences with glassmorphism, subtle depth, and
               interactive 3D - without the clutter.

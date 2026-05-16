@@ -30,7 +30,7 @@ export default function SectionHeading({ eyebrow, title, subtitle }) {
           whileInView="show"
           custom={0.16}
           viewport={{ once: true, margin: '-15% 0px -30% 0px' }}
-          className="mt-3 max-w-3xl text-pretty font-caveat text-2xl font-medium leading-snug text-zinc-300 sm:text-3xl"
+          className="mt-3 max-w-3xl text-pretty font-caveat text-3xl font-medium leading-snug text-zinc-300 sm:text-4xl"
         >
           {subtitle}
         </m.p>
