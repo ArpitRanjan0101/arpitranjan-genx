@@ -70,9 +70,15 @@ body {
   width: min(calc(100% - 2rem), 84rem);
   pointer-events: none;
   z-index: 10;
+  overflow: hidden;
 }
 
-.site-frame::before {
+.site-frame__inner {
+  position: absolute;
+  inset: 0;
+}
+
+.site-frame__inner::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -81,7 +87,7 @@ body {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
-.site-frame::after {
+.site-frame__inner::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -108,8 +114,27 @@ body {
     bottom: 0.75rem;
     width: calc(100% - 1rem);
   }
-  .site-frame::before,
-  .site-frame::after {
+  .site-frame__inner::before,
+  .site-frame__inner::after {
     border-radius: 18px;
+  }
+}
+
+/* Make the frame feel "long" while scrolling by subtly shifting the border/corners
+   based on scroll position (content moves, frame stays, but the frame looks like it
+   wraps the full page). */
+@supports (animation-timeline: scroll()) {
+  .site-frame__inner {
+    animation: frame-pan 1s linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes frame-pan {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-22%);
+    }
   }
 }
