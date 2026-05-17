@@ -38,7 +38,7 @@ export default function Navbar({ activeId }) {
           >
             <div className="w-11" aria-hidden="true" />
 
-            <div className="hidden flex-1 justify-center md:flex">
+            <div className="hidden flex-1 items-center justify-center gap-2 md:flex">
               <nav className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
                 {items.map((it) => (
                   <button
@@ -61,28 +61,28 @@ export default function Navbar({ activeId }) {
                   </button>
                 ))}
               </nav>
+
+              <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
+                {socials.map((s) => {
+                  const Icon = s.icon
+                  return (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target={s.href.startsWith('http') ? '_blank' : undefined}
+                      rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="group grid h-9 w-9 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
+                      aria-label={s.label}
+                    >
+                      <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
+                    </a>
+                  )
+                })}
+              </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="hidden md:block">
-                <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
-                  {socials.map((s) => {
-                    const Icon = s.icon
-                    return (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        target={s.href.startsWith('http') ? '_blank' : undefined}
-                        rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
-                        className="group grid h-9 w-9 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
-                        aria-label={s.label}
-                      >
-                        <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
-                      </a>
-                    )
-                  })}
-                </div>
-              </div>
+              <div className="hidden w-11 md:block" />
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
