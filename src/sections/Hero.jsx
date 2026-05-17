@@ -1,12 +1,10 @@
-import React, { Suspense, lazy, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { m, useMotionTemplate, useScroll, useTransform } from 'framer-motion'
 import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
 import Magnetic from '@/components/Magnetic'
 import { fadeUp, stagger } from '@/animations/motion'
-
-const HeroCanvas = lazy(() => import('@/three/HeroCanvas'))
 
 export default function Hero() {
   const { scrollY } = useScroll()
@@ -105,21 +103,18 @@ export default function Hero() {
               style={{ y, filter }}
               className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-fuchsia-500/6 to-cyan-400/10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-white/3 to-transparent" />
               <div className="absolute inset-0 opacity-70 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]">
                 <div className="absolute -inset-20 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent)]" />
               </div>
 
               <div className="relative h-[22rem] sm:h-[26rem] lg:h-[30rem]">
-                <Suspense
-                  fallback={
-                    <div className="grid h-full place-items-center text-sm text-zinc-400">
-                      Loading 3D...
-                    </div>
-                  }
-                >
-                  <HeroCanvas />
-                </Suspense>
+                <div
+                  className="hero-portrait absolute inset-0"
+                  style={{ '--hero-portrait-url': "url('/images/hero-portrait.jpeg')" }}
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
               </div>
 
               <div className="relative flex flex-wrap items-center justify-between gap-3 border-t border-white/8 p-5">
