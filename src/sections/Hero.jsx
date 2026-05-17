@@ -27,7 +27,7 @@ export default function Hero() {
 
       <Container className="relative">
         <div className="grid items-center gap-10 lg:grid-cols-12">
-          <m.div variants={stagger} initial="hidden" animate="show" className="lg:col-span-6">
+          <m.div variants={stagger} initial="hidden" animate="show" className="lg:col-span-7">
             <m.div
               variants={fadeUp}
               className="inline-flex items-center gap-2 rounded-full bg-white/6 px-4 py-2 text-xs text-zinc-300 ring-1 ring-white/10"
@@ -98,7 +98,7 @@ export default function Hero() {
             </m.div>
           </m.div>
 
-          <div className="relative lg:col-span-6">
+          <div className="relative lg:col-span-5">
             <m.div
               style={{ y, filter }}
               className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow"
@@ -108,28 +108,13 @@ export default function Hero() {
                 <div className="absolute -inset-20 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent)]" />
               </div>
 
-              <div className="relative h-[22rem] sm:h-[26rem] lg:h-[30rem]">
+              <div className="relative h-[24rem] sm:h-[28rem] lg:h-[34rem]">
                 <div
                   className="hero-portrait absolute inset-0"
                   style={{ '--hero-portrait-url': "url('/images/hero-portrait.jpeg')" }}
                   aria-hidden="true"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
-              </div>
-
-              <div className="relative flex flex-wrap items-center justify-between gap-3 border-t border-white/8 p-5">
-                <div className="text-xs text-zinc-400">Based in India | Working globally</div>
-                <div className="flex items-center gap-2 text-xs text-zinc-400">
-                  <span className="inline-flex h-5 items-center rounded-full bg-white/5 px-2 ring-1 ring-white/10">
-                    React
-                  </span>
-                  <span className="inline-flex h-5 items-center rounded-full bg-white/5 px-2 ring-1 ring-white/10">
-                    R3F
-                  </span>
-                  <span className="inline-flex h-5 items-center rounded-full bg-white/5 px-2 ring-1 ring-white/10">
-                    Motion
-                  </span>
-                </div>
               </div>
             </m.div>
           </div>
