@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { m, useMotionTemplate, useScroll, useTransform } from 'framer-motion'
-import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
+import { FiArrowUpRight } from 'react-icons/fi'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
 import Magnetic from '@/components/Magnetic'
@@ -11,15 +11,6 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 600], [0, 60])
   const blur = useTransform(scrollY, [0, 600], [0, 6])
   const filter = useMotionTemplate`blur(${blur}px)`
-
-  const socials = useMemo(
-    () => [
-      { label: 'GitHub', icon: FiGithub, href: 'https://github.com/' },
-      { label: 'LinkedIn', icon: FiLinkedin, href: 'https://linkedin.com/' },
-      { label: 'Email', icon: FiMail, href: 'mailto:hello@example.com' },
-    ],
-    []
-  )
 
   return (
     <section id="hero" className="relative pt-24 sm:pt-28">
@@ -79,23 +70,6 @@ export default function Hero() {
               </Button>
             </m.div>
 
-            <m.div variants={fadeUp} className="mt-8 flex items-center gap-2">
-              {socials.map((s) => {
-                const Icon = s.icon
-                return (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target={s.href.startsWith('http') ? '_blank' : undefined}
-                    rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="group grid h-10 w-10 place-items-center rounded-full bg-white/5 ring-1 ring-white/10 transition hover:bg-white/10"
-                    aria-label={s.label}
-                  >
-                    <Icon className="text-zinc-200 transition group-hover:text-white" />
-                  </a>
-                )
-              })}
-            </m.div>
           </m.div>
 
           <div className="relative lg:col-span-5">

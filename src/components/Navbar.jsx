@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { m, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
 import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
@@ -16,6 +16,14 @@ export default function Navbar({ activeId }) {
   const items = useMemo(() => NAV_ITEMS, [])
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const [open, setOpen] = useState(false)
+  const socials = useMemo(
+    () => [
+      { label: 'GitHub', icon: FiGithub, href: 'https://github.com/' },
+      { label: 'LinkedIn', icon: FiLinkedin, href: 'https://linkedin.com/' },
+      { label: 'Email', icon: FiMail, href: 'mailto:hello@example.com' },
+    ],
+    []
+  )
 
   useEffect(() => {
     if (isDesktop) setOpen(false)
@@ -30,8 +38,8 @@ export default function Navbar({ activeId }) {
           >
             <div className="w-11" aria-hidden="true" />
 
-            <nav className="hidden flex-1 justify-center md:flex">
-              <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
+            <div className="hidden flex-1 justify-center md:flex">
+              <nav className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
                 {items.map((it) => (
                   <button
                     key={it.id}
@@ -52,8 +60,28 @@ export default function Navbar({ activeId }) {
                     <span className="relative">{it.label}</span>
                   </button>
                 ))}
-              </div>
-            </nav>
+
+                <span className="mx-1 h-6 w-px rounded-full bg-white/10" aria-hidden="true" />
+
+                <div className="flex items-center gap-1 pr-1">
+                  {socials.map((s) => {
+                    const Icon = s.icon
+                    return (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        target={s.href.startsWith('http') ? '_blank' : undefined}
+                        rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
+                        className="group grid h-9 w-9 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
+                        aria-label={s.label}
+                      >
+                        <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
+                      </a>
+                    )
+                  })}
+                </div>
+              </nav>
+            </div>
 
             <div className="flex items-center gap-2">
               <div className="hidden w-11 md:block" />
