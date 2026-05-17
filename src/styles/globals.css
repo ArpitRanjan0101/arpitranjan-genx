@@ -121,21 +121,65 @@ body {
   }
 }
 
-/* Make the frame feel "long" while scrolling by subtly shifting the border/corners
-   based on scroll position (content moves, frame stays, but the frame looks like it
-   wraps the full page). */
+/* Long vertical lines inside the frame (with scroll shimmer) */
+.site-frame__line {
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.9;
+}
+
+.site-frame__line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 35%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  background-size: 100% 220%;
+  background-position: 0% 0%;
+  opacity: 0.65;
+  mix-blend-mode: screen;
+}
+
+.site-frame__line--l {
+  left: 18px;
+}
+
+.site-frame__line--r {
+  right: 18px;
+}
+
+@media (max-width: 640px) {
+  .site-frame__line {
+    top: 14px;
+    bottom: 14px;
+  }
+  .site-frame__line--l {
+    left: 14px;
+  }
+  .site-frame__line--r {
+    right: 14px;
+  }
+}
+
 @supports (animation-timeline: scroll()) {
-  .site-frame__inner {
-    animation: frame-pan 1s linear both;
+  .site-frame__line::after {
+    animation: frame-line-shimmer 1s linear both;
     animation-timeline: scroll(root);
   }
 
-  @keyframes frame-pan {
+  @keyframes frame-line-shimmer {
     from {
-      transform: translateY(0);
+      background-position: 0% 0%;
     }
     to {
-      transform: translateY(-22%);
+      background-position: 0% 100%;
     }
   }
 }
