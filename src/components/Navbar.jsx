@@ -71,7 +71,7 @@ export default function Navbar({ activeId }) {
                 ))}
               </nav>
 
-              <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
+              <div className="flex items-center gap-1 rounded-full bg-white/5 p-1.5 ring-1 ring-white/10 backdrop-blur">
                 {socials.map((s) => {
                   const Icon = s.icon
                   return (
@@ -80,10 +80,10 @@ export default function Navbar({ activeId }) {
                       href={s.href}
                       target={s.href.startsWith('http') ? '_blank' : undefined}
                       rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
-                      className="group grid h-9 w-9 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
+                      className="group grid h-10 w-10 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
                       aria-label={s.label}
                     >
-                      <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
+                      <Icon className="text-[19px] opacity-90 transition group-hover:opacity-100" />
                     </a>
                   )
                 })}
