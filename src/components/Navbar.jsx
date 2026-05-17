@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { m, AnimatePresence } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
+import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
 import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
@@ -47,6 +47,7 @@ export default function Navbar({ activeId }) {
                     onClick={() => scrollToId(it.id)}
                     className={cn(
                       'relative rounded-full px-4 py-2 font-caveat text-base font-medium text-zinc-300 transition hover:text-zinc-50',
+                      (it.id === 'hero' || it.label?.toLowerCase() === 'home') && 'px-3',
                       activeId === it.id && 'text-zinc-50'
                     )}
                   >
@@ -57,7 +58,14 @@ export default function Navbar({ activeId }) {
                         transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                       />
                     ) : null}
-                    <span className="relative">{it.label}</span>
+                    {it.id === 'hero' || it.label?.toLowerCase() === 'home' ? (
+                      <span className="relative inline-flex items-center">
+                        <FiHome className="text-[18px]" aria-hidden="true" />
+                        <span className="sr-only">Home</span>
+                      </span>
+                    ) : (
+                      <span className="relative">{it.label}</span>
+                    )}
                   </button>
                 ))}
               </nav>
