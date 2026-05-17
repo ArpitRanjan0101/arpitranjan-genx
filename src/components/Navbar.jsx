@@ -41,9 +41,9 @@ export default function Navbar({ activeId }) {
       return
     }
 
-    // User request: hide when scrolling up, show when scrolling down.
-    if (delta < -2) setHidden(true)
-    if (delta > 2) setHidden(false)
+    // Hide while scrolling down, reveal while scrolling up.
+    if (delta > 2) setHidden(true)
+    if (delta < -2) setHidden(false)
   })
 
   return (
@@ -52,7 +52,7 @@ export default function Navbar({ activeId }) {
       animate={open || !hidden ? 'show' : 'hide'}
       variants={{
         show: { y: 0, opacity: 1, filter: 'blur(0px)' },
-        hide: { y: -26, opacity: 0, filter: 'blur(10px)' },
+        hide: { y: -40, opacity: 0, filter: 'blur(10px)' },
       }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
