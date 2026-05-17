@@ -32,18 +32,9 @@ export default function Navbar({ activeId }) {
   }, [isDesktop])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    const prev = scrollY.getPrevious() ?? latest
-    const delta = latest - prev
-
-    // Always show near the top so navigation isn't lost.
-    if (latest < 80) {
-      setHidden(false)
-      return
-    }
-
-    // Hide while scrolling down, reveal while scrolling up.
-    if (delta > 2) setHidden(true)
-    if (delta < -2) setHidden(false)
+    // User request: navbar should only appear at the hero/top section.
+    // Keep it visible near the top, and hidden everywhere else.
+    setHidden(latest >= 120)
   })
 
   return (
