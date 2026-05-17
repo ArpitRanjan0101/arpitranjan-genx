@@ -60,10 +60,12 @@ export default function Navbar({ activeId }) {
                     <span className="relative">{it.label}</span>
                   </button>
                 ))}
+              </nav>
+            </div>
 
-                <span className="mx-1 h-6 w-px rounded-full bg-white/10" aria-hidden="true" />
-
-                <div className="flex items-center gap-1 pr-1">
+            <div className="flex items-center gap-2">
+              <div className="hidden md:block">
+                <div className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
                   {socials.map((s) => {
                     const Icon = s.icon
                     return (
@@ -80,11 +82,7 @@ export default function Navbar({ activeId }) {
                     )
                   })}
                 </div>
-              </nav>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="hidden w-11 md:block" />
+              </div>
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
