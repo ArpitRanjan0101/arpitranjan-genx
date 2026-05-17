@@ -58,16 +58,6 @@ export default function Hero() {
                   View work <FiArrowUpRight className="opacity-80" />
                 </Button>
               </Magnetic>
-              <Button
-                href="#contact"
-                variant="ghost"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                Contact
-              </Button>
             </m.div>
 
           </m.div>
