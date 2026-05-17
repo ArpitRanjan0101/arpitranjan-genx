@@ -47,7 +47,8 @@ export default function Navbar({ activeId }) {
                     onClick={() => scrollToId(it.id)}
                     className={cn(
                       'relative rounded-full px-4 py-2 font-caveat text-base font-medium text-zinc-300 transition hover:text-zinc-50',
-                      (it.id === 'hero' || it.label?.toLowerCase() === 'home') && 'px-3',
+                      (it.id === 'hero' || it.label?.toLowerCase() === 'home') &&
+                        'grid h-10 w-10 place-items-center px-0 py-0 leading-none',
                       activeId === it.id && 'text-zinc-50'
                     )}
                   >
