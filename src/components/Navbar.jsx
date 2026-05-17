@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
 import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
 import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
@@ -16,6 +16,8 @@ export default function Navbar({ activeId }) {
   const items = useMemo(() => NAV_ITEMS, [])
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const [open, setOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const { scrollY } = useScroll()
   const socials = useMemo(
     () => [
       { label: 'GitHub', icon: FiGithub, href: 'https://github.com/' },
@@ -29,8 +31,31 @@ export default function Navbar({ activeId }) {
     if (isDesktop) setOpen(false)
   }, [isDesktop])
 
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const prev = scrollY.getPrevious() ?? latest
+    const delta = latest - prev
+
+    // Always show near the top so navigation isn't lost.
+    if (latest < 80) {
+      setHidden(false)
+      return
+    }
+
+    // User request: hide when scrolling up, show when scrolling down.
+    if (delta < -2) setHidden(true)
+    if (delta > 2) setHidden(false)
+  })
+
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
+    <m.header
+      className="pointer-events-none fixed inset-x-0 top-0 z-50"
+      animate={open || !hidden ? 'show' : 'hide'}
+      variants={{
+        show: { y: 0, opacity: 1, filter: 'blur(0px)' },
+        hide: { y: -26, opacity: 0, filter: 'blur(10px)' },
+      }}
+      transition={{ duration: 0.22, ease: 'easeOut' }}
+    >
       <Container className="pointer-events-auto">
         <div className="pt-4">
           <div
@@ -143,6 +168,6 @@ export default function Navbar({ activeId }) {
           </div>
         </div>
       </Container>
-    </header>
+    </m.header>
   )
 }
