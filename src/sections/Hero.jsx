@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { m, useMotionTemplate, useScroll, useTransform } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
@@ -10,8 +10,6 @@ import { fadeUp, stagger } from '@/animations/motion'
 export default function Hero() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 600], [0, 60])
-  const blur = useTransform(scrollY, [0, 600], [0, 6])
-  const filter = useMotionTemplate`blur(${blur}px)`
 
   return (
     <section id="hero" className="relative pt-24 sm:pt-28">
@@ -66,7 +64,7 @@ export default function Hero() {
 
           <div className="relative lg:col-span-5">
             <m.div
-              style={{ y, filter }}
+              style={{ y }}
               className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-white/3 to-transparent" />
