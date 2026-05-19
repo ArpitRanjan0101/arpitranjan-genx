@@ -3,6 +3,15 @@ import { m } from 'framer-motion'
 import { cn } from '@/utils/cn'
 
 export default function Logo({ className, name = 'Arpit ranjan' }) {
+  const displayName = useMemo(() => {
+    const trimmed = String(name || '').trim()
+    if (!trimmed) return 'Arpit Ranjan'
+    return trimmed
+      .split(/\s+/g)
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(' ')
+  }, [name])
+
   const shineId = useMemo(
     () => `logo-shine-${Math.random().toString(16).slice(2)}`,
     []
@@ -17,20 +26,20 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
       )}
       whileHover={{ y: -1, scale: 1.03 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      aria-label={`< ${name} />`}
+      aria-label={`< ${displayName} />`}
     >
       <span className="translate-y-[0.02em] font-sans text-[0.95em] font-semibold text-zinc-200/90">
         &lt;
       </span>
 
       <span
-        className="relative -mt-[0.02em] font-signature text-[1.18em] tracking-[0.01em] text-zinc-50 antialiased"
+        className="relative -mt-[0.02em] translate-y-[0.07em] font-signature text-[1.18em] tracking-[0.01em] text-zinc-50 antialiased"
         style={{
           textShadow:
             '0 0 14px rgba(255,255,255,0.18), 0 0 34px rgba(99,102,241,0.15)',
         }}
       >
-        <span className="opacity-95">{name}</span>
+        <span className="opacity-95">{displayName}</span>
         <span
           id={shineId}
           aria-hidden="true"
@@ -45,7 +54,7 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
                 'linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.9), rgba(255,255,255,0))',
             }}
           >
-            {name}
+            {displayName}
           </span>
         </span>
       </span>
@@ -56,4 +65,3 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
     </m.span>
   )
 }
-
