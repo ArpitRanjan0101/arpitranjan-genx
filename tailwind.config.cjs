@@ -19,6 +19,7 @@ module.exports = {
           'Segoe UI Emoji'
         ],
         caveat: ['Caveat', 'cursive'],
+        signature: ['"Great Vibes"', 'cursive'],
       },
       colors: {
         ink: {

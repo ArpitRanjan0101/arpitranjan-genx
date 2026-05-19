@@ -5,52 +5,12 @@ import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import Logo from '@/components/navbar/Logo'
 
 function scrollToId(id) {
   const el = document.getElementById(id)
   if (!el) return
   el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-
-function BrandName({ className }) {
-  const text = 'Arpit ranjan'
-  const stops = useMemo(
-    () => ['#22d3ee', '#a78bfa', '#f472b6', '#34d399', '#fbbf24', '#60a5fa'],
-    []
-  )
-
-  return (
-    <span
-      className={cn(
-        "select-none text-[22px] font-normal leading-none sm:text-[28.5px]",
-        className
-      )}
-      aria-label={text}
-    >
-      <span className="inline-flex items-center gap-2">
-        <span className="text-[0.95em] font-semibold text-zinc-200/90">&lt;</span>
-        <span className="[font-family:'Agustina Regular','Caveat',cursive]">
-          {Array.from(text).map((ch, i) => {
-            if (ch === ' ') return <span key={`sp-${i}`}>&nbsp;</span>
-            const c1 = stops[i % stops.length]
-            const c2 = stops[(i + 2) % stops.length]
-            return (
-              <span
-                key={`${ch}-${i}`}
-                className="bg-clip-text text-transparent [-webkit-background-clip:text]"
-                style={{
-                  backgroundImage: `linear-gradient(90deg, ${c1}, ${c2})`,
-                }}
-              >
-                {ch}
-              </span>
-            )
-          })}
-        </span>
-        <span className="text-[0.95em] font-semibold text-zinc-200/90">/&gt;</span>
-      </span>
-    </span>
-  )
 }
 
 export default function Navbar({ activeId }) {
@@ -99,7 +59,7 @@ export default function Navbar({ activeId }) {
               className="inline-flex items-center rounded-xl px-2 py-2 text-zinc-100/90 transition hover:text-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/15"
               aria-label="Go to top"
             >
-              <BrandName />
+              <Logo />
             </button>
 
             <div className="hidden flex-1 items-center justify-center gap-2 md:flex">
