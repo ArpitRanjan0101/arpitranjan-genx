@@ -81,6 +81,8 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
     () => displayName.slice(0, typedCount),
     [displayName, typedCount]
   )
+  // Keep layout stable: caret should keep its space even when hidden.
+  // Avoid toggling layout-affecting classes at the "fully typed" moment.
   const doneTyping = typedCount >= displayName.length
 
   return (
@@ -112,10 +114,8 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
           {typedText}
           <span
             aria-hidden="true"
-            className={cn(
-              'ml-[0.06em] inline-block h-[0.9em] w-[2px] translate-y-[0.12em] rounded-full bg-white/80',
-              doneTyping ? 'opacity-0' : 'animate-pulse'
-            )}
+            className="ml-[0.06em] inline-block h-[0.9em] w-[2px] translate-y-[0.12em] rounded-full bg-white/80 animate-pulse"
+            style={{ opacity: doneTyping ? 0 : 1 }}
           />
         </span>
         <span
@@ -132,7 +132,7 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
                 'linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.9), rgba(255,255,255,0))',
             }}
           >
-            {doneTyping ? displayName : typedText}
+            {typedText}
           </span>
         </span>
       </span>
