@@ -22,27 +22,33 @@ function BrandName({ className }) {
   return (
     <span
       className={cn(
-        "select-none text-[22px] font-bold leading-none sm:text-[28.5px] [font-family:'Agustina Regular','Caveat',cursive]",
+        "select-none text-[22px] font-bold leading-none sm:text-[28.5px]",
         className
       )}
       aria-label={text}
     >
-      {Array.from(text).map((ch, i) => {
-        if (ch === ' ') return <span key={`sp-${i}`}>&nbsp;</span>
-        const c1 = stops[i % stops.length]
-        const c2 = stops[(i + 2) % stops.length]
-        return (
-          <span
-            key={`${ch}-${i}`}
-            className="bg-clip-text text-transparent [-webkit-background-clip:text]"
-            style={{
-              backgroundImage: `linear-gradient(90deg, ${c1}, ${c2})`,
-            }}
-          >
-            {ch}
-          </span>
-        )
-      })}
+      <span className="inline-flex items-center gap-2">
+        <span className="text-[0.95em] font-semibold text-zinc-200/90">&lt;</span>
+        <span className="[font-family:'Great Vibes','Agustina Regular','Caveat',cursive]">
+          {Array.from(text).map((ch, i) => {
+            if (ch === ' ') return <span key={`sp-${i}`}>&nbsp;</span>
+            const c1 = stops[i % stops.length]
+            const c2 = stops[(i + 2) % stops.length]
+            return (
+              <span
+                key={`${ch}-${i}`}
+                className="bg-clip-text text-transparent [-webkit-background-clip:text]"
+                style={{
+                  backgroundImage: `linear-gradient(90deg, ${c1}, ${c2})`,
+                }}
+              >
+                {ch}
+              </span>
+            )
+          })}
+        </span>
+        <span className="text-[0.95em] font-semibold text-zinc-200/90">/&gt;</span>
+      </span>
     </span>
   )
 }
