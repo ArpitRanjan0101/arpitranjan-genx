@@ -22,14 +22,14 @@ function BrandName({ className }) {
   return (
     <span
       className={cn(
-        "select-none text-[22px] font-bold leading-none sm:text-[28.5px]",
+        "select-none text-[22px] font-normal leading-none sm:text-[28.5px]",
         className
       )}
       aria-label={text}
     >
       <span className="inline-flex items-center gap-2">
         <span className="text-[0.95em] font-semibold text-zinc-200/90">&lt;</span>
-        <span className="[font-family:'Great Vibes','Agustina Regular','Caveat',cursive]">
+        <span className="[font-family:'Agustina Regular','Caveat',cursive]">
           {Array.from(text).map((ch, i) => {
             if (ch === ' ') return <span key={`sp-${i}`}>&nbsp;</span>
             const c1 = stops[i % stops.length]

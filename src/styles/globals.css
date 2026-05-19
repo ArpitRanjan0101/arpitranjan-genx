@@ -5,7 +5,11 @@
 /* Optional local font hookup (uses installed font if available) */
 @font-face {
   font-family: 'Agustina Regular';
-  src: local('Agustina Regular'), local('Agustina');
+  src:
+    local('Agustina Regular'),
+    local('Agustina'),
+    url('/fonts/Agustina-Regular.woff2') format('woff2'),
+    url('/fonts/Agustina-Regular.woff') format('woff');
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
