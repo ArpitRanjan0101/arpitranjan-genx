@@ -22,7 +22,7 @@ function BrandName({ className }) {
   return (
     <span
       className={cn(
-        "select-none text-[22px] font-bold leading-none sm:text-[28.5px] [font-family:'Agustina_Regular','Agustina Regular','Caveat',cursive]",
+        "select-none text-[22px] font-bold leading-none sm:text-[28.5px] [font-family:'Agustina Regular','Caveat',cursive]",
         className
       )}
       aria-label={text}
