@@ -68,7 +68,9 @@ export default function Navbar({ activeId }) {
                       activeId === it.id && 'text-zinc-50'
                     )}
                   >
-                    {activeId === it.id ? (
+                    {activeId === it.id &&
+                    it.id !== 'hero' &&
+                    it.label?.toLowerCase() !== 'home' ? (
                       <m.span
                         layoutId="nav-pill"
                         className="absolute inset-0 rounded-full bg-white/10 ring-1 ring-white/12"
