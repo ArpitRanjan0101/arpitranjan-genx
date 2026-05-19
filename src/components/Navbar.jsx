@@ -12,6 +12,41 @@ function scrollToId(id) {
   el.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+function BrandName({ className }) {
+  const text = 'Arpit ranjan'
+  const stops = useMemo(
+    () => ['#22d3ee', '#a78bfa', '#f472b6', '#34d399', '#fbbf24', '#60a5fa'],
+    []
+  )
+
+  return (
+    <span
+      className={cn(
+        "select-none text-[22px] font-bold leading-none sm:text-[28.5px] [font-family:'Agustina_Regular','Agustina Regular','Caveat',cursive]",
+        className
+      )}
+      aria-label={text}
+    >
+      {Array.from(text).map((ch, i) => {
+        if (ch === ' ') return <span key={`sp-${i}`}>&nbsp;</span>
+        const c1 = stops[i % stops.length]
+        const c2 = stops[(i + 2) % stops.length]
+        return (
+          <span
+            key={`${ch}-${i}`}
+            className="bg-clip-text text-transparent [-webkit-background-clip:text]"
+            style={{
+              backgroundImage: `linear-gradient(90deg, ${c1}, ${c2})`,
+            }}
+          >
+            {ch}
+          </span>
+        )
+      })}
+    </span>
+  )
+}
+
 export default function Navbar({ activeId }) {
   const items = useMemo(() => NAV_ITEMS, [])
   const isDesktop = useMediaQuery('(min-width: 768px)')
@@ -52,7 +87,14 @@ export default function Navbar({ activeId }) {
           <div
             className="relative flex items-center justify-between px-2 py-3 md:px-0"
           >
-            <div className="w-11" aria-hidden="true" />
+            <button
+              type="button"
+              onClick={() => scrollToId('hero')}
+              className="inline-flex items-center rounded-xl px-2 py-2 text-zinc-100/90 transition hover:text-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/15"
+              aria-label="Go to top"
+            >
+              <BrandName />
+            </button>
 
             <div className="hidden flex-1 items-center justify-center gap-2 md:flex">
               <nav className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
