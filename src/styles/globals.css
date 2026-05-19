@@ -74,50 +74,11 @@ body {
   overflow: hidden;
 }
 
-.site-frame__inner {
-  position: absolute;
-  inset: 0;
-}
-
-.site-frame__inner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.075);
-  border-radius: 22px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-}
-
-.site-frame__inner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  background:
-    /* top-left */
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) 22px 18px / 46px 1px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) 18px 22px / 1px 46px no-repeat,
-    /* top-right */
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) calc(100% - 68px) 18px / 46px 1px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) calc(100% - 18px) 22px / 1px 46px no-repeat,
-    /* bottom-left */
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) 22px calc(100% - 18px) / 46px 1px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) 18px calc(100% - 68px) / 1px 46px no-repeat,
-    /* bottom-right */
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) calc(100% - 68px) calc(100% - 18px) / 46px 1px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)) calc(100% - 18px) calc(100% - 68px) / 1px 46px no-repeat;
-  opacity: 0.9;
-}
-
 @media (max-width: 640px) {
   .site-frame {
     top: 4.5rem;
     bottom: 0.75rem;
     width: calc(100% - 1rem);
-  }
-  .site-frame__inner::before,
-  .site-frame__inner::after {
-    border-radius: 18px;
   }
 }
 

@@ -4,11 +4,13 @@ import Container from '@/components/Container'
 import SectionHeading from '@/components/SectionHeading'
 import GlassCard from '@/components/GlassCard'
 import Button from '@/components/Button'
+import SectionDivider from '@/components/SectionDivider'
 import { fadeUp } from '@/animations/motion'
 
 export default function Contact() {
   return (
     <section id="contact" className="pt-20 pb-20 sm:pt-24 sm:pb-24">
+      <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading
           eyebrow="CONTACT"
@@ -77,4 +79,3 @@ export default function Contact() {
     </section>
   )
 }
-

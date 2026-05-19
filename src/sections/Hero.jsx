@@ -4,6 +4,7 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
 import Magnetic from '@/components/Magnetic'
+import SectionDivider from '@/components/SectionDivider'
 import { fadeUp, stagger } from '@/animations/motion'
 
 export default function Hero() {
@@ -14,6 +15,7 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative pt-24 sm:pt-28">
+      <SectionDivider className="mb-10 sm:mb-12" />
       <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent" />
 
       <Container className="relative">

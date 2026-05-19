@@ -1,11 +1,13 @@
 import Container from '@/components/Container'
 import SectionHeading from '@/components/SectionHeading'
 import ProjectCard from '@/components/ProjectCard'
+import SectionDivider from '@/components/SectionDivider'
 import { PROJECTS } from '@/utils/data'
 
 export default function Projects() {
   return (
     <section id="projects" className="pt-20 sm:pt-24">
+      <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading
           eyebrow="PROJECTS"
@@ -22,4 +24,3 @@ export default function Projects() {
     </section>
   )
 }
-
