@@ -88,7 +88,7 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
   return (
     <m.span
       className={cn(
-        'group inline-flex select-none items-center gap-2 leading-none',
+        'group inline-flex select-none items-center gap-2 leading-none whitespace-nowrap',
         'text-[22px] sm:text-[28.5px]',
         className
       )}
@@ -101,7 +101,7 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
       </span>
 
       <span
-        className="relative -mt-[0.02em] translate-y-[0.07em] font-signature text-[1.18em] tracking-[0.01em] text-zinc-50 antialiased"
+        className="relative -mt-[0.02em] translate-y-[0.07em] whitespace-nowrap font-signature text-[1.18em] tracking-[0.01em] text-zinc-50 antialiased"
         style={{
           textShadow:
             '0 0 14px rgba(255,255,255,0.18), 0 0 34px rgba(99,102,241,0.15)',
