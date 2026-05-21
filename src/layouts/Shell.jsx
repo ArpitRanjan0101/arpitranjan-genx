@@ -1,6 +1,5 @@
 import { AnimatePresence, m } from 'framer-motion'
 import Background from '@/components/Background'
-import Cursor from '@/components/Cursor'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import LoadingScreen from '@/components/LoadingScreen'
@@ -14,7 +13,6 @@ export default function Shell({ children, activeId, ready, onReady }) {
         <div className="site-frame__line site-frame__line--l" />
         <div className="site-frame__line site-frame__line--r" />
       </div>
-      <Cursor />
 
       <AnimatePresence initial>
         {!ready && <LoadingScreen key="loader" onDone={onReady} />}
