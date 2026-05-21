@@ -82,7 +82,7 @@ export default function Navbar({ activeId }) {
                       }
                     }}
                     className={cn(
-                      'relative rounded-full px-4 py-2 font-caveat text-base font-medium text-zinc-300 transition hover:text-zinc-50',
+                      'relative rounded-full px-4 py-2 font-caveat text-xl font-medium text-zinc-300 transition hover:text-zinc-50',
                       (it.id === 'hero' || it.label?.toLowerCase() === 'home') &&
                         'grid h-10 w-10 place-items-center px-0 py-0 leading-none',
                       activeId === it.id && 'text-zinc-50'
@@ -175,7 +175,7 @@ export default function Navbar({ activeId }) {
                           }
                         }}
                         className={cn(
-                          'flex items-center justify-between rounded-xl px-4 py-3 text-left font-caveat text-base font-medium text-zinc-200 ring-1 ring-transparent transition hover:bg-white/6 hover:text-zinc-50',
+                          'flex items-center justify-between rounded-xl px-4 py-3 text-left font-caveat text-xl font-medium text-zinc-200 ring-1 ring-transparent transition hover:bg-white/6 hover:text-zinc-50',
                           activeId === it.id && 'bg-white/6 ring-white/10'
                         )}
                       >
