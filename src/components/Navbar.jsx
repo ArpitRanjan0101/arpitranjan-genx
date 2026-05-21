@@ -109,7 +109,7 @@ export default function Navbar({ activeId }) {
                 ))}
               </nav>
 
-              <div className="flex items-center rounded-full bg-white/5 p-2 ring-1 ring-white/10 backdrop-blur">
+              <div className="flex items-center rounded-full bg-white/5 p-[6px] ring-1 ring-white/10 backdrop-blur">
                 {socials.map((s, idx) => {
                   const Icon = s.icon
                   return (
