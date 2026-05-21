@@ -67,7 +67,7 @@ export default function Navbar({ activeId }) {
               <Logo />
             </button>
 
-            <div className="hidden flex-1 items-center justify-center gap-2 md:flex">
+            <div className="hidden flex-1 items-center justify-center gap-6 md:flex">
               <nav className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
                 {items.map((it) => (
                   <button
@@ -109,7 +109,7 @@ export default function Navbar({ activeId }) {
                 ))}
               </nav>
 
-              <div className="flex items-center rounded-full bg-white/5 p-[5px] ring-1 ring-white/10 backdrop-blur">
+              <div className="flex items-center rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
                 {socials.map((s, idx) => {
                   const Icon = s.icon
                   return (
@@ -125,7 +125,7 @@ export default function Navbar({ activeId }) {
                         onClick={s.isInternal ? (e) => { e.preventDefault(); navigate(s.href); } : undefined}
                         target={!s.isInternal && s.href.startsWith('http') ? '_blank' : undefined}
                         rel={!s.isInternal && s.href.startsWith('http') ? 'noreferrer' : undefined}
-                        className="group relative grid h-[38px] w-[38px] place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
+                        className="group relative grid h-8 w-8 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
                         aria-label={s.label}
                       >
                         <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
