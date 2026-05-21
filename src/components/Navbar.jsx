@@ -82,9 +82,9 @@ export default function Navbar({ activeId }) {
                       }
                     }}
                     className={cn(
-                      'relative rounded-full px-4 py-2 font-caveat text-xl font-medium text-zinc-300 transition hover:text-zinc-50',
+                      'relative rounded-full px-4 py-1 font-caveat text-xl font-medium text-zinc-300 transition hover:text-zinc-50',
                       (it.id === 'hero' || it.label?.toLowerCase() === 'home') &&
-                        'grid h-10 w-10 place-items-center px-0 py-0 leading-none',
+                        'grid h-9 w-9 place-items-center px-0 py-0 leading-none',
                       activeId === it.id && 'text-zinc-50'
                     )}
                   >
