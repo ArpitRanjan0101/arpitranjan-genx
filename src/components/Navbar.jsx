@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { m, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
-import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX } from 'react-icons/fi'
+import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX, FiStar } from 'react-icons/fi'
 import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import Logo from '@/components/navbar/Logo'
+import { navigate } from '@/App'
 
 function scrollToId(id) {
   const el = document.getElementById(id)
@@ -21,6 +22,7 @@ export default function Navbar({ activeId }) {
   const { scrollY } = useScroll()
   const socials = useMemo(
     () => [
+      { label: 'Non-Technical Skills', icon: FiStar, href: '/non-technical-skills', isInternal: true },
       { label: 'GitHub', icon: FiGithub, href: 'https://github.com/' },
       { label: 'LinkedIn', icon: FiLinkedin, href: 'https://linkedin.com/' },
       { label: 'Email', icon: FiMail, href: 'mailto:hello@example.com' },
@@ -55,7 +57,10 @@ export default function Navbar({ activeId }) {
           >
             <button
               type="button"
-              onClick={() => scrollToId('hero')}
+              onClick={() => {
+                navigate('/')
+                setTimeout(() => scrollToId('hero'), 0)
+              }}
               className="inline-flex items-center rounded-xl px-2 py-2 text-zinc-100/90 transition hover:text-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/15"
               aria-label="Go to top"
             >
@@ -68,7 +73,14 @@ export default function Navbar({ activeId }) {
                   <button
                     key={it.id}
                     type="button"
-                    onClick={() => scrollToId(it.id)}
+                    onClick={() => {
+                      if (window.location.pathname !== '/') {
+                        navigate('/')
+                        setTimeout(() => scrollToId(it.id), 100)
+                      } else {
+                        scrollToId(it.id)
+                      }
+                    }}
                     className={cn(
                       'relative rounded-full px-4 py-2 font-caveat text-base font-medium text-zinc-300 transition hover:text-zinc-50',
                       (it.id === 'hero' || it.label?.toLowerCase() === 'home') &&
@@ -110,12 +122,16 @@ export default function Navbar({ activeId }) {
                       ) : null}
                       <a
                         href={s.href}
-                        target={s.href.startsWith('http') ? '_blank' : undefined}
-                        rel={s.href.startsWith('http') ? 'noreferrer' : undefined}
-                        className="group grid h-[38px] w-[38px] place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
+                        onClick={s.isInternal ? (e) => { e.preventDefault(); navigate(s.href); } : undefined}
+                        target={!s.isInternal && s.href.startsWith('http') ? '_blank' : undefined}
+                        rel={!s.isInternal && s.href.startsWith('http') ? 'noreferrer' : undefined}
+                        className="group relative grid h-[38px] w-[38px] place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
                         aria-label={s.label}
                       >
                         <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
+                        <span className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-200 opacity-0 transition-opacity group-hover:opacity-100 ring-1 ring-white/10">
+                          {s.label}
+                        </span>
                       </a>
                     </React.Fragment>
                   )
@@ -151,7 +167,12 @@ export default function Navbar({ activeId }) {
                         type="button"
                         onClick={() => {
                           setOpen(false)
-                          scrollToId(it.id)
+                          if (window.location.pathname !== '/') {
+                            navigate('/')
+                            setTimeout(() => scrollToId(it.id), 100)
+                          } else {
+                            scrollToId(it.id)
+                          }
                         }}
                         className={cn(
                           'flex items-center justify-between rounded-xl px-4 py-3 text-left font-caveat text-base font-medium text-zinc-200 ring-1 ring-transparent transition hover:bg-white/6 hover:text-zinc-50',
@@ -159,7 +180,7 @@ export default function Navbar({ activeId }) {
                         )}
                       >
                         <span>{it.label}</span>
-                        <span className="text-xs text-zinc-400">â†µ</span>
+                        <span className="text-xs text-zinc-400">&#x21B5;</span>
                       </button>
                     ))}
                   </div>
