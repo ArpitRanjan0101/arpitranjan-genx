@@ -50,13 +50,13 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
       // phase changes
       if (dir === 1 && i >= displayName.length) {
         dir = -1
-        schedule(1100)
+        schedule(1200)
         return
       }
 
       if (dir === -1 && i <= 0) {
         dir = 1
-        schedule(420)
+        schedule(600)
         return
       }
 
@@ -65,12 +65,12 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
       const nextIndex = dir === 1 ? i - 1 : i
       const ch = displayName[nextIndex] || ''
 
-      const base = dir === 1 ? (ch === ' ' ? 150 : 58) : 26
-      const jitter = Math.floor(Math.random() * (dir === 1 ? 60 : 30))
+      const base = dir === 1 ? (ch === ' ' ? 200 : 90) : 50
+      const jitter = Math.floor(Math.random() * (dir === 1 ? 30 : 20))
       schedule(base + jitter)
     }
 
-    schedule(260)
+    schedule(360)
     return () => {
       cancelled = true
       if (timer) window.clearTimeout(timer)
