@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { m, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
-import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX, FiStar } from 'react-icons/fi'
+import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX, FiAward } from 'react-icons/fi'
 import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
@@ -22,7 +22,7 @@ export default function Navbar({ activeId }) {
   const { scrollY } = useScroll()
   const socials = useMemo(
     () => [
-      { label: 'Non-Technical Skills', icon: FiStar, href: '/non-technical-skills', isInternal: true },
+      { label: 'Non-Technical Skills', icon: FiAward, href: '/non-technical-skills', isInternal: true },
       { label: 'GitHub', icon: FiGithub, href: 'https://github.com/' },
       { label: 'LinkedIn', icon: FiLinkedin, href: 'https://linkedin.com/' },
       { label: 'Email', icon: FiMail, href: 'mailto:hello@example.com' },
