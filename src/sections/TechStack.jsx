@@ -6,11 +6,8 @@ import { fadeUp, stagger } from '@/animations/motion'
 import {
   SiReact,
   SiHtml5,
-  SiMicrosoftazure,
   SiAppwrite,
   SiNextdotjs,
-  SiCss3,
-  SiAmazonwebservices,
   SiPostman,
   SiTypescript,
   SiExpress,
@@ -21,15 +18,17 @@ import {
   SiGit,
   SiGo
 } from 'react-icons/si'
+import { FaAws, FaCss3Alt } from 'react-icons/fa'
+import { VscAzure } from 'react-icons/vsc'
 
 const ICONS = [
   { name: 'React', icon: SiReact, color: '#61DAFB' },
   { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
-  { name: 'Azure', icon: SiMicrosoftazure, color: '#0089D6' },
+  { name: 'Azure', icon: VscAzure, color: '#0089D6' },
   { name: 'Appwrite', icon: SiAppwrite, color: '#FD366E' },
   { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
-  { name: 'CSS3', icon: SiCss3, color: '#1572B6' },
-  { name: 'AWS', icon: SiAmazonwebservices, color: '#232F3E' },
+  { name: 'CSS3', icon: FaCss3Alt, color: '#1572B6' },
+  { name: 'AWS', icon: FaAws, color: '#232F3E' },
   { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
   { name: 'Express', icon: SiExpress, color: '#000000' },
