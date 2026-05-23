@@ -11,8 +11,6 @@ import { fadeUp, stagger } from '@/animations/motion'
 export default function Hero() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 600], [0, 60])
-  const opacity = useTransform(scrollY, [0, 400], [1, 0])
-  const scale = useTransform(scrollY, [0, 400], [1, 0.95])
 
   return (
     <section id="hero" className="relative pt-24 sm:pt-28">
@@ -20,7 +18,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent" />
 
       <Container className="relative">
-        <m.div style={{ opacity, scale }} className="grid items-center gap-10 lg:grid-cols-12">
+        <div className="grid items-center gap-10 lg:grid-cols-12">
           <m.div variants={stagger} initial="hidden" animate="show" className="lg:col-span-7">
             <m.div
               variants={fadeUp}
@@ -81,7 +79,7 @@ export default function Hero() {
               </div>
             </m.div>
           </div>
-        </m.div>
+        </div>
 
       </Container>
     </section>
