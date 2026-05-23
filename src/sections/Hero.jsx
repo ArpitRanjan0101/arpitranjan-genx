@@ -5,6 +5,7 @@ import Container from '@/components/Container'
 import Button from '@/components/Button'
 import Magnetic from '@/components/Magnetic'
 import SectionDivider from '@/components/SectionDivider'
+import Typewriter from '@/components/Typewriter'
 import { fadeUp, stagger } from '@/animations/motion'
 
 export default function Hero() {
@@ -31,11 +32,7 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-6 text-balance text-4xl font-semibold leading-[1.08] text-zinc-50 sm:text-5xl"
             >
-              Frontend engineer crafting{' '}
-              <span className="bg-gradient-to-r from-indigo-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-transparent">
-                cinematic interfaces
-              </span>
-              .
+              <Typewriter />
             </m.h1>
 
             <m.p
