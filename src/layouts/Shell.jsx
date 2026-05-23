@@ -20,7 +20,7 @@ export default function Shell({ children, activeId, ready, onReady }) {
 
       <Navbar activeId={activeId} />
 
-      <m.main variants={pageVariants} initial="initial" animate="enter" exit="exit" className="relative">
+      <m.main variants={pageVariants} initial="initial" animate="enter" exit="exit" className="relative z-10">
         {children}
       </m.main>
 
