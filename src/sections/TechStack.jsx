@@ -1,7 +1,5 @@
 import React from 'react'
-import { m } from 'framer-motion'
 import Container from '@/components/Container'
-import { fadeUp, stagger } from '@/animations/motion'
 
 import {
   SiReact,
@@ -46,35 +44,23 @@ export default function TechStack() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* Left Column */}
-          <m.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-10% 0px -30% 0px' }}
-            variants={stagger}
-            className="flex flex-col items-start"
-          >
-            <m.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-widest text-zinc-300 uppercase">
+          <div className="flex flex-col items-start">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-widest text-zinc-300 uppercase">
               <span className="text-white">✦</span> Tech Stack
-            </m.div>
+            </div>
             
-            <m.h2 variants={fadeUp} className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Key Technologies<br />
               <span className="font-light italic text-zinc-400">& Platforms</span>
-            </m.h2>
+            </h2>
             
-            <m.p variants={fadeUp} className="mt-6 max-w-md text-base leading-relaxed text-zinc-400">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-zinc-400">
               A curated set of modern tools I use to build fast, scalable, and production-ready applications.
-            </m.p>
-          </m.div>
+            </p>
+          </div>
 
           {/* Right Column */}
-          <m.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-10% 0px -30% 0px' }}
-            variants={fadeUp}
-            className="relative rounded-[2rem] bg-[#111111] border border-white/5 p-8 shadow-2xl"
-          >
+          <div className="relative rounded-[2rem] bg-[#111111] border border-white/5 p-8 shadow-2xl">
             <div className="grid grid-cols-4 gap-4 sm:gap-6">
               {ICONS.map((item, idx) => {
                 const Icon = item.icon
@@ -88,7 +74,7 @@ export default function TechStack() {
                 )
               })}
             </div>
-          </m.div>
+          </div>
         </div>
       </Container>
     </section>
