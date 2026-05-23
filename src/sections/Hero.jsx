@@ -84,21 +84,6 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-3">
-          {[
-            { k: 'Fast', v: '60fps motion, tuned for INP.' },
-            { k: 'Clean', v: 'Reusable components and tokens.' },
-            { k: 'Premium', v: 'Typography, spacing, depth.' },
-          ].map((item) => (
-            <div
-              key={item.k}
-              className="rounded-2xl bg-white/[0.04] p-5 ring-1 ring-white/10 backdrop-blur-md"
-            >
-              <div className="text-sm font-semibold text-zinc-50">{item.k}</div>
-              <div className="mt-1 text-sm text-zinc-300">{item.v}</div>
-            </div>
-          ))}
-        </div>
       </Container>
     </section>
   )
