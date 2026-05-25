@@ -50,6 +50,11 @@ const COLUMNS = [
   ]
 ]
 
+import TechGlobe from '@/components/TechGlobe'
+
+// Flatten COLUMNS into a single array for the 3D globe
+const ICONS = COLUMNS.flat()
+
 export default function TechStack() {
   return (
     <SectionFrame id="tech-stack" className="py-24 sm:py-32 relative z-10">
@@ -71,35 +76,9 @@ export default function TechStack() {
             </p>
           </div>
 
-          {/* Right Column - Marquee */}
-          <div className="relative h-[32rem] overflow-hidden rounded-[2rem] bg-[#111111] border border-white/5 p-4 sm:p-6 shadow-2xl flex gap-3 sm:gap-5 justify-between select-none">
-            {/* Fade masks for smooth entry/exit */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-12 sm:h-20 bg-gradient-to-b from-[#111111] to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 sm:h-20 bg-gradient-to-t from-[#111111] to-transparent z-10" />
-
-            {COLUMNS.map((col, i) => (
-              <div key={i} className="flex-1 overflow-hidden relative">
-                <div 
-                  className={cn(
-                    "flex flex-col gap-4 sm:gap-6 w-full absolute left-0 right-0",
-                    i % 2 === 0 ? "animate-[marquee-up_15s_linear_infinite]" : "animate-[marquee-down_18s_linear_infinite]"
-                  )}
-                >
-                  {/* Duplicate 4 times to ensure smooth infinite loop and full coverage */}
-                  {[...col, ...col, ...col, ...col].map((item, idx) => {
-                    const Icon = item.icon
-                    return (
-                      <div key={idx} className="flex flex-col items-center gap-2 sm:gap-3">
-                        <div className="flex h-14 w-14 sm:h-[4.25rem] sm:w-[4.25rem] items-center justify-center rounded-2xl bg-white shadow-sm hover:scale-105 transition-transform duration-300">
-                          <Icon size={32} color={item.color} />
-                        </div>
-                        <span className="text-[10px] sm:text-xs font-medium text-zinc-400 whitespace-nowrap">{item.name}</span>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            ))}
+          {/* Right Column - 3D Globe */}
+          <div className="relative h-[32rem] sm:h-[36rem] flex items-center justify-center">
+            <TechGlobe icons={ICONS} />
           </div>
         </div>
       </Container>
