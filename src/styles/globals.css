@@ -83,7 +83,7 @@ body {
   /* leave space so navbar sits "outside" the frame */
   top: 5.25rem;
   bottom: 1.25rem;
-  width: min(calc(100% - 2rem), 84rem);
+  width: min(calc(100% - 1.5rem), 74rem); /* Wraps the max-w-6xl container (72rem) with slight padding */
   pointer-events: none;
   z-index: 10;
   overflow: hidden;
@@ -122,11 +122,11 @@ body {
 }
 
 .site-frame__line--l {
-  left: 18px;
+  left: 0;
 }
 
 .site-frame__line--r {
-  right: 18px;
+  right: 0;
 }
 
 @media (max-width: 640px) {
@@ -135,10 +135,10 @@ body {
     bottom: 14px;
   }
   .site-frame__line--l {
-    left: 14px;
+    left: 0;
   }
   .site-frame__line--r {
-    right: 14px;
+    right: 0;
   }
 }
 
