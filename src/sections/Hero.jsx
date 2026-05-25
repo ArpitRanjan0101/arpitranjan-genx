@@ -5,7 +5,6 @@ import Container from '@/components/Container'
 import Button from '@/components/Button'
 import Magnetic from '@/components/Magnetic'
 import SectionDivider from '@/components/SectionDivider'
-import Typewriter from '@/components/Typewriter'
 import { fadeUp, stagger } from '@/animations/motion'
 import BioTypewriter from '@/components/BioTypewriter'
 
@@ -28,9 +27,11 @@ export default function Hero() {
 
             <m.h1
               variants={fadeUp}
-              className="mt-6 text-balance text-4xl font-semibold leading-[1.08] text-zinc-50 sm:text-5xl"
+              className="mt-6 text-5xl font-extrabold tracking-tighter leading-[1.05] text-zinc-50 sm:text-6xl lg:text-[5rem]"
             >
-              <Typewriter />
+              <span className="block">Decouple Everything.</span>
+              <span className="block">Reliability</span>
+              <span className="block text-zinc-400">Follows.</span>
             </m.h1>
 
             <m.div
