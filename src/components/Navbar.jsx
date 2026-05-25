@@ -42,8 +42,7 @@ export default function Navbar({ activeId }) {
 
   return (
     <m.header
-      className="pointer-events-none fixed inset-x-0 top-0 z-[999]"
-      style={{ transform: 'translateZ(0px)' }}
+      className="pointer-events-none fixed inset-x-0 top-0 z-50"
       animate={open || !hidden ? 'show' : 'hide'}
       variants={{
         show: { y: 0, opacity: 1, filter: 'blur(0px)' },

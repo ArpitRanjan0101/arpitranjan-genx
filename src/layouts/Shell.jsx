@@ -18,11 +18,11 @@ export default function Shell({ children, activeId, ready, onReady }) {
         {!ready && <LoadingScreen key="loader" onDone={onReady} />}
       </AnimatePresence>
 
-      <Navbar activeId={activeId} />
-
       <m.main variants={pageVariants} initial="initial" animate="enter" exit="exit" className="relative z-0">
         {children}
       </m.main>
+
+      <Navbar activeId={activeId} />
 
       <Footer />
     </div>
