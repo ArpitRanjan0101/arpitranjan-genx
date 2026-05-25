@@ -38,7 +38,7 @@ export default function Hero() {
               className="mt-5 max-w-xl space-y-4 text-pretty font-caveat text-xl font-medium leading-snug text-zinc-300 sm:text-2xl min-h-[12rem] sm:min-h-[14rem]"
             >
               <BioTypewriter 
-                text={`Entrepreneur and Chief Operating Officer at Triostack Technologies, driving product execution, technology strategy, and operational scale. As a hands-on full-stack engineer and executive, I bridge the gap between business objectives and technical deployment.\n\nCurrently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Generative AI, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.`} 
+                text={`Entrepreneur and Chief Operating Officer at Triostack Technologies, driving product execution, technology strategy, and operational scale. As a hands-on full-stack engineer and executive, I bridge the gap between business objectives and technical deployment, with a strong focus on system design and complex problem solving.\n\nCurrently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Generative AI, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.`} 
                 speed={15} 
               />
             </m.div>
