@@ -7,6 +7,7 @@ import Magnetic from '@/components/Magnetic'
 import SectionDivider from '@/components/SectionDivider'
 import Typewriter from '@/components/Typewriter'
 import { fadeUp, stagger } from '@/animations/motion'
+import BioTypewriter from '@/components/BioTypewriter'
 
 export default function Hero() {
   return (
@@ -34,14 +35,12 @@ export default function Hero() {
 
             <m.div
               variants={fadeUp}
-              className="mt-5 max-w-xl space-y-4 text-pretty font-caveat text-xl font-medium leading-snug text-zinc-300 sm:text-2xl"
+              className="mt-5 max-w-xl space-y-4 text-pretty font-caveat text-xl font-medium leading-snug text-zinc-300 sm:text-2xl min-h-[12rem] sm:min-h-[14rem]"
             >
-              <p>
-                Entrepreneur and Chief Operating Officer at Triostack Technologies, driving product execution, technology strategy, and operational scale. As a hands-on full-stack engineer and executive, I bridge the gap between business objectives and technical deployment.
-              </p>
-              <p>
-                Currently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Generative AI, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.
-              </p>
+              <BioTypewriter 
+                text={`Entrepreneur and Chief Operating Officer at Triostack Technologies, driving product execution, technology strategy, and operational scale. As a hands-on full-stack engineer and executive, I bridge the gap between business objectives and technical deployment.\n\nCurrently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Generative AI, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.`} 
+                speed={15} 
+              />
             </m.div>
 
             <m.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
