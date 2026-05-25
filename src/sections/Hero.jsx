@@ -11,11 +11,11 @@ import BioTypewriter from '@/components/BioTypewriter'
 
 export default function Hero() {
   return (
-    <SectionFrame id="hero" className="relative pt-32 sm:pt-40 pb-24 sm:pb-32">
-      <SectionDivider className="mb-10 sm:mb-12" />
+    <section id="hero" className="relative pt-24 sm:pt-28">
       <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent z-[-1]" />
 
-      <Container className="relative">
+      <SectionFrame className="pt-12 sm:pt-16 pb-24 sm:pb-32">
+        <Container className="relative">
         <div className="grid items-center gap-10 lg:grid-cols-12">
           <m.div variants={stagger} initial="hidden" animate="show" className="lg:col-span-7">
             <m.div
@@ -104,6 +104,7 @@ export default function Hero() {
         </div>
 
       </Container>
-    </SectionFrame>
+      </SectionFrame>
+    </section>
   )
 }
