@@ -7,8 +7,8 @@ function Cloud({ icons, radius = 2.4 }) {
 
   // Generate spherical coordinates using Fibonacci sphere algorithm
   const items = useMemo(() => {
-    // Duplicate icons to create a denser globe
-    const denseIcons = [...icons, ...icons, ...icons, ...icons, ...icons]
+    // Duplicate icons slightly to create a balanced globe without overcrowding
+    const denseIcons = [...icons, ...icons]
     const count = denseIcons.length
     const points = []
     const phi = Math.PI * (3 - Math.sqrt(5)) // Golden angle
