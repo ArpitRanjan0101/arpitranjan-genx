@@ -32,13 +32,17 @@ export default function Hero() {
               <Typewriter />
             </m.h1>
 
-            <m.p
+            <m.div
               variants={fadeUp}
-              className="mt-5 max-w-xl text-pretty font-caveat text-xl font-medium leading-snug text-zinc-300 sm:text-2xl"
+              className="mt-5 max-w-xl space-y-4 text-pretty font-caveat text-xl font-medium leading-snug text-zinc-300 sm:text-2xl"
             >
-              Motion-first, performance-conscious web experiences with glassmorphism, subtle depth, and
-              interactive 3D - without the clutter.
-            </m.p>
+              <p>
+                Entrepreneur and Chief Operating Officer at Triostack Technologies, driving product execution, technology strategy, and operational scale. As a hands-on full-stack engineer and executive, I bridge the gap between business objectives and technical deployment.
+              </p>
+              <p>
+                Currently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Blockchain, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.
+              </p>
+            </m.div>
 
             <m.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
               <Magnetic strength={0.3}>
