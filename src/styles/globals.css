@@ -97,13 +97,26 @@ body {
   }
 }
 
-/* Long vertical lines inside the frame (drawn by scrolling) */
+/* Long vertical lines inside the frame (static track) */
 .site-frame__line {
   position: absolute;
   top: 18px;
   bottom: 18px;
   width: 1px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08); /* faint static line always present */
+}
+
+/* The bright effect that draws over the static line */
+.site-frame__line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
   transform-origin: top;
   transform: scaleY(1);
 }
@@ -130,12 +143,12 @@ body {
 }
 
 @supports (animation-timeline: scroll()) {
-  .site-frame__line {
-    animation: draw-frame-line linear both;
+  .site-frame__line::after {
+    animation: draw-frame-effect linear both;
     animation-timeline: scroll(root);
   }
 
-  @keyframes draw-frame-line {
+  @keyframes draw-frame-effect {
     from {
       transform: scaleY(0);
     }
