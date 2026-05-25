@@ -12,11 +12,6 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
       .join(' ')
   }, [name])
 
-  const shineId = useMemo(
-    () => `logo-shine-${Math.random().toString(16).slice(2)}`,
-    []
-  )
-
   return (
     <m.span
       className={cn(
@@ -28,38 +23,21 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       aria-label={`< ${displayName} />`}
     >
-      <span className="translate-y-[0.02em] font-sans text-[0.95em] font-semibold text-zinc-200/90">
+      <span className="translate-y-[0.02em] font-sans text-[0.95em] font-semibold text-zinc-200/90 transition-colors duration-300 group-hover:text-white">
         &lt;
       </span>
 
       <span
-        className="relative -mt-[0.02em] translate-y-[0.07em] whitespace-nowrap font-signature text-[1.18em] tracking-[0.01em] text-zinc-50 antialiased"
+        className="relative -mt-[0.02em] translate-y-[0.07em] whitespace-nowrap font-signature text-[1.18em] tracking-[0.01em] text-zinc-50 antialiased transition-colors duration-300 group-hover:text-white"
         style={{
           textShadow:
             '0 0 14px rgba(255,255,255,0.18), 0 0 34px rgba(99,102,241,0.15)',
         }}
       >
-        <span className="relative opacity-95">
-          {displayName}
-        </span>
-        <span
-          id={shineId}
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
-        >
-          <span
-            className="absolute inset-0 bg-clip-text text-transparent [-webkit-background-clip:text] animate-shimmer"
-            style={{
-              backgroundImage:
-                'linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.9), rgba(255,255,255,0))',
-            }}
-          >
-            {displayName}
-          </span>
-        </span>
+        {displayName}
       </span>
 
-      <span className="translate-y-[0.02em] font-sans text-[0.95em] font-semibold text-zinc-200/90">
+      <span className="translate-y-[0.02em] font-sans text-[0.95em] font-semibold text-zinc-200/90 transition-colors duration-300 group-hover:text-white">
         /&gt;
       </span>
     </m.span>
