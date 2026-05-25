@@ -22,14 +22,14 @@ import { FaCss3Alt, FaJava, FaLink, FaProjectDiagram, FaRobot, FaDatabase } from
 const COLUMNS = [
   [
     { name: 'React', icon: SiReact, color: '#61DAFB' },
-    { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
+    { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
     { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
     { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
   ],
   [
     { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
     { name: 'CSS3', icon: FaCss3Alt, color: '#1572B6' },
-    { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
+    { name: 'Express', icon: SiExpress, color: '#000000' },
     { name: 'Java', icon: FaJava, color: '#007396' },
     { name: 'PHP', icon: SiPhp, color: '#777BB4' },
   ],
@@ -39,11 +39,11 @@ const COLUMNS = [
     { name: 'Docker', icon: SiDocker, color: '#2496ED' },
     { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
     { name: 'Git', icon: SiGit, color: '#F05032' },
-    { name: 'GitHub', icon: SiGithub, color: '#FFFFFF' },
+    { name: 'GitHub', icon: SiGithub, color: '#181717' },
   ],
   [
-    { name: 'LangChain', icon: FaLink, color: '#FFFFFF' },
-    { name: 'LangGraph', icon: FaProjectDiagram, color: '#FFFFFF' },
+    { name: 'LangChain', icon: FaLink, color: '#000000' },
+    { name: 'LangGraph', icon: FaProjectDiagram, color: '#000000' },
     { name: 'RAG', icon: FaRobot, color: '#00B4D8' },
     { name: 'Vector DB', icon: FaDatabase, color: '#009688' },
   ]
@@ -81,7 +81,7 @@ export default function TechStack() {
                 <div 
                   className={cn(
                     "flex flex-col gap-4 sm:gap-6 w-full absolute left-0 right-0",
-                    i % 2 === 0 ? "animate-[marquee-up_35s_linear_infinite]" : "animate-[marquee-down_40s_linear_infinite]"
+                    i % 2 === 0 ? "animate-[marquee-up_15s_linear_infinite]" : "animate-[marquee-down_18s_linear_infinite]"
                   )}
                 >
                   {/* Duplicate 4 times to ensure smooth infinite loop and full coverage */}
