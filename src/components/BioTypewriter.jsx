@@ -37,7 +37,7 @@ const BioTypewriter = ({ segments, speed = 15 }) => {
         {i < arr.length - 1 && (
           <>
             <br />
-            <br />
+            <span className="block h-2 sm:h-3" aria-hidden="true" />
           </>
         )}
       </React.Fragment>
