@@ -52,7 +52,7 @@ const COLUMNS = [
 
 export default function TechStack() {
   return (
-    <SectionFrame id="tech-stack" className="py-20 sm:py-24 relative z-10">
+    <SectionFrame id="tech-stack" className="py-24 sm:py-32 relative z-10">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* Left Column */}

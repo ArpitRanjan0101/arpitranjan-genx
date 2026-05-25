@@ -8,7 +8,7 @@ import { fadeUp, stagger } from '@/animations/motion'
 
 export default function Skills() {
   return (
-    <SectionFrame id="skills" className="py-20 sm:py-24">
+    <SectionFrame id="skills" className="py-24 sm:py-32">
       <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading

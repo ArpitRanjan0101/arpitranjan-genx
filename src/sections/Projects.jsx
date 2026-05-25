@@ -7,7 +7,7 @@ import { PROJECTS } from '@/utils/data'
 
 export default function Projects() {
   return (
-    <SectionFrame id="projects" className="py-20 sm:py-24">
+    <SectionFrame id="projects" className="py-24 sm:py-32">
       <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading

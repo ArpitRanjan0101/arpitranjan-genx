@@ -10,7 +10,7 @@ import { fadeUp } from '@/animations/motion'
 
 export default function Contact() {
   return (
-    <SectionFrame id="contact" className="pt-20 pb-20 sm:pt-24 sm:pb-24">
+    <SectionFrame id="contact" className="py-24 sm:py-32">
       <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading
