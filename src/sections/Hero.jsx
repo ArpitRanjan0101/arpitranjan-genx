@@ -77,7 +77,10 @@ export default function Hero() {
                 <div className="absolute -inset-20 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent)]" />
               </div>
 
-              <div className="relative h-[24rem] sm:h-[28rem] lg:h-[34rem]">
+              <div className="absolute top-6 left-6 w-16 h-16 border-t border-l border-white/20 rounded-tl-sm z-20 pointer-events-none" />
+              <div className="absolute bottom-6 right-6 w-16 h-16 border-b border-r border-white/20 rounded-br-sm z-20 pointer-events-none" />
+
+              <div className="relative h-[28rem] sm:h-[34rem] lg:h-[42rem]">
                 <div
                   className="hero-portrait absolute inset-0"
                   style={{ '--hero-portrait-url': "url('/images/hero-portrait.jpeg')" }}
