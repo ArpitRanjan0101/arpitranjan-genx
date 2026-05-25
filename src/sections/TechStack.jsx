@@ -1,41 +1,52 @@
 import React from 'react'
 import Container from '@/components/Container'
+import { cn } from '@/utils/cn'
 
 import {
   SiReact,
   SiHtml5,
-  SiAppwrite,
   SiNextdotjs,
-  SiPostman,
   SiTypescript,
   SiExpress,
   SiKubernetes,
-  SiCplusplus,
   SiJavascript,
   SiMysql,
   SiGit,
-  SiGo
+  SiPhp,
+  SiMongodb,
+  SiDocker,
+  SiGithub
 } from 'react-icons/si'
-import { FaAws, FaCss3Alt } from 'react-icons/fa'
-import { VscAzure } from 'react-icons/vsc'
+import { FaCss3Alt, FaJava, FaLink, FaProjectDiagram, FaRobot, FaDatabase } from 'react-icons/fa'
 
-const ICONS = [
-  { name: 'React', icon: SiReact, color: '#61DAFB' },
-  { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
-  { name: 'Azure', icon: VscAzure, color: '#0089D6' },
-  { name: 'Appwrite', icon: SiAppwrite, color: '#FD366E' },
-  { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
-  { name: 'CSS3', icon: FaCss3Alt, color: '#1572B6' },
-  { name: 'AWS', icon: FaAws, color: '#232F3E' },
-  { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
-  { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-  { name: 'Express', icon: SiExpress, color: '#000000' },
-  { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
-  { name: 'C++', icon: SiCplusplus, color: '#00599C' },
-  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
-  { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
-  { name: 'Git', icon: SiGit, color: '#F05032' },
-  { name: 'Go', icon: SiGo, color: '#00ADD8' },
+const COLUMNS = [
+  [
+    { name: 'React', icon: SiReact, color: '#61DAFB' },
+    { name: 'Next.js', icon: SiNextdotjs, color: '#FFFFFF' },
+    { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+  ],
+  [
+    { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
+    { name: 'CSS3', icon: FaCss3Alt, color: '#1572B6' },
+    { name: 'Express', icon: SiExpress, color: '#FFFFFF' },
+    { name: 'Java', icon: FaJava, color: '#007396' },
+    { name: 'PHP', icon: SiPhp, color: '#777BB4' },
+  ],
+  [
+    { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+    { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+    { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+    { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
+    { name: 'Git', icon: SiGit, color: '#F05032' },
+    { name: 'GitHub', icon: SiGithub, color: '#FFFFFF' },
+  ],
+  [
+    { name: 'LangChain', icon: FaLink, color: '#FFFFFF' },
+    { name: 'LangGraph', icon: FaProjectDiagram, color: '#FFFFFF' },
+    { name: 'RAG', icon: FaRobot, color: '#00B4D8' },
+    { name: 'Vector DB', icon: FaDatabase, color: '#009688' },
+  ]
 ]
 
 export default function TechStack() {
@@ -59,21 +70,35 @@ export default function TechStack() {
             </p>
           </div>
 
-          {/* Right Column */}
-          <div className="relative rounded-[2rem] bg-[#111111] border border-white/5 p-8 shadow-2xl">
-            <div className="grid grid-cols-4 gap-4 sm:gap-6">
-              {ICONS.map((item, idx) => {
-                const Icon = item.icon
-                return (
-                  <div key={idx} className="flex flex-col items-center gap-3">
-                    <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white shadow-sm transition-transform hover:scale-110">
-                      <Icon size={32} color={item.color} />
-                    </div>
-                    <span className="text-xs font-medium text-zinc-300">{item.name}</span>
-                  </div>
-                )
-              })}
-            </div>
+          {/* Right Column - Marquee */}
+          <div className="relative h-[32rem] overflow-hidden rounded-[2rem] bg-[#111111] border border-white/5 p-4 sm:p-6 shadow-2xl flex gap-3 sm:gap-5 justify-between select-none">
+            {/* Fade masks for smooth entry/exit */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-12 sm:h-20 bg-gradient-to-b from-[#111111] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 sm:h-20 bg-gradient-to-t from-[#111111] to-transparent z-10" />
+
+            {COLUMNS.map((col, i) => (
+              <div key={i} className="flex-1 overflow-hidden relative">
+                <div 
+                  className={cn(
+                    "flex flex-col gap-4 sm:gap-6 w-full absolute left-0 right-0",
+                    i % 2 === 0 ? "animate-[marquee-up_35s_linear_infinite]" : "animate-[marquee-down_40s_linear_infinite]"
+                  )}
+                >
+                  {/* Duplicate 4 times to ensure smooth infinite loop and full coverage */}
+                  {[...col, ...col, ...col, ...col].map((item, idx) => {
+                    const Icon = item.icon
+                    return (
+                      <div key={idx} className="flex flex-col items-center gap-2 sm:gap-3">
+                        <div className="flex h-14 w-14 sm:h-[4.25rem] sm:w-[4.25rem] items-center justify-center rounded-2xl bg-white shadow-sm hover:scale-105 transition-transform duration-300">
+                          <Icon size={32} color={item.color} />
+                        </div>
+                        <span className="text-[10px] sm:text-xs font-medium text-zinc-400 whitespace-nowrap">{item.name}</span>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
