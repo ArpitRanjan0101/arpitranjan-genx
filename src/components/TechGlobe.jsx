@@ -2,12 +2,14 @@ import React, { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Html, TrackballControls } from '@react-three/drei'
 
-function Cloud({ icons, radius = 3 }) {
+function Cloud({ icons, radius = 2.4 }) {
   const groupRef = useRef()
 
   // Generate spherical coordinates using Fibonacci sphere algorithm
   const items = useMemo(() => {
-    const count = icons.length
+    // Duplicate icons to create a denser globe
+    const denseIcons = [...icons, ...icons, ...icons, ...icons, ...icons]
+    const count = denseIcons.length
     const points = []
     const phi = Math.PI * (3 - Math.sqrt(5)) // Golden angle
 
@@ -21,7 +23,7 @@ function Cloud({ icons, radius = 3 }) {
 
       points.push({
         position: [x * radius, y * radius, z * radius],
-        ...icons[i]
+        ...denseIcons[i]
       })
     }
     return points
@@ -57,7 +59,7 @@ function Cloud({ icons, radius = 3 }) {
 
 export default function TechGlobe({ icons }) {
   return (
-    <div className="relative h-[32rem] sm:h-[36rem] w-full overflow-hidden rounded-[2rem] bg-transparent flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
+    <div className="relative h-[28rem] sm:h-[32rem] w-full bg-transparent flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
       <Canvas camera={{ position: [0, 0, 7.5], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <Cloud icons={icons} />
