@@ -57,13 +57,23 @@ export default function Hero() {
             <m.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
               <Magnetic strength={0.3}>
                 <Button
-                  href="#projects"
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  My Resume <FiArrowUpRight className="opacity-80" />
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button
+                  href="#contact"
+                  variant="ghost"
                   onClick={(e) => {
                     e.preventDefault()
-                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
                   }}
                 >
-                  View work <FiArrowUpRight className="opacity-80" />
+                  Contact Me
                 </Button>
               </Magnetic>
             </m.div>
