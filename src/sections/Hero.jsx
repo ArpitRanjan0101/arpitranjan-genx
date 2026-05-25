@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { m, useScroll, useTransform } from 'framer-motion'
+import React from 'react'
+import { m } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
 import Container from '@/components/Container'
 import Button from '@/components/Button'
@@ -9,11 +9,8 @@ import Typewriter from '@/components/Typewriter'
 import { fadeUp, stagger } from '@/animations/motion'
 
 export default function Hero() {
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 600], [0, 60])
-
   return (
-    <section id="hero" className="relative pt-24 sm:pt-28">
+    <section id="hero" className="relative pt-24 sm:pt-28 pb-20 sm:pb-32">
       <SectionDivider className="mb-10 sm:mb-12" />
       <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent" />
 
@@ -60,10 +57,7 @@ export default function Hero() {
           </m.div>
 
           <div className="relative lg:col-span-5">
-            <m.div
-              style={{ y }}
-              className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow"
-            >
+            <div className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow">
               <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-white/3 to-transparent" />
               <div className="absolute inset-0 opacity-70 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]">
                 <div className="absolute -inset-20 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent)]" />
@@ -77,7 +71,7 @@ export default function Hero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
               </div>
-            </m.div>
+            </div>
           </div>
         </div>
 
