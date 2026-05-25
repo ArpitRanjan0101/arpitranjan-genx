@@ -11,7 +11,7 @@ import BioTypewriter from '@/components/BioTypewriter'
 
 export default function Hero() {
   return (
-    <SectionFrame id="hero" className="relative pt-24 sm:pt-28 pb-8 sm:pb-12">
+    <SectionFrame id="hero" className="relative pt-32 sm:pt-40 pb-20 sm:pb-24">
       <SectionDivider className="mb-10 sm:mb-12" />
       <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent z-[-1]" />
 
