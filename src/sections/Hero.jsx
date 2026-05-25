@@ -56,7 +56,7 @@ export default function Hero() {
 
           </m.div>
 
-          <div className="relative lg:col-span-5">
+          <div className="relative lg:col-span-5 isolate z-0">
             <div className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow">
               <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-white/3 to-transparent" />
               <div className="absolute inset-0 opacity-70 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]">
