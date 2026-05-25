@@ -39,9 +39,10 @@ export default function Hero() {
             >
               <BioTypewriter 
                 segments={[
-                  { text: "Chief Operating Officer & entrepreneur", highlight: true },
+                  { text: "I am ", highlight: false },
+                  { text: "Chief Operating Officer and Entrepreneur", highlight: true },
                   { text: " at ", highlight: false },
-                  { text: "Triostack Technologies private limited", highlight: true },
+                  { text: "Triostack Technologies Private Limited", highlight: true },
                   { text: ", driving product execution, technology strategy, and operational scale. As a ", highlight: false },
                   { text: "hands-on full-stack engineer", highlight: true },
                   { text: " and executive, I bridge the gap between business objectives and technical deployment, with a strong focus on system design and complex problem-solving.\n\nCurrently architecting intelligent, production-ready solutions at the intersection of ", highlight: false },
