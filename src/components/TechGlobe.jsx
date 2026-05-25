@@ -60,7 +60,7 @@ function Cloud({ icons, radius = 3.2 }) {
 export default function TechGlobe({ icons }) {
   return (
     <div className="relative h-[28rem] sm:h-[32rem] w-full bg-transparent flex items-center justify-center cursor-grab active:cursor-grabbing select-none">
-      <Canvas camera={{ position: [0, 0, 20], fov: 20 }}>
+      <Canvas camera={{ position: [0, 0, 24], fov: 20 }}>
         <ambientLight intensity={0.5} />
         <Cloud icons={icons} />
         <TrackballControls noPan noZoom rotateSpeed={2.5} />
