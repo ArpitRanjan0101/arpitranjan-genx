@@ -3,11 +3,12 @@ import Container from '@/components/Container'
 import SectionHeading from '@/components/SectionHeading'
 import GlassCard from '@/components/GlassCard'
 import SectionDivider from '@/components/SectionDivider'
+import SectionFrame from '@/components/SectionFrame'
 import { fadeUp, stagger } from '@/animations/motion'
 
 export default function About() {
   return (
-    <section id="about" className="pt-20 sm:pt-24">
+    <SectionFrame id="about" className="pt-20 sm:pt-24">
       <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading
@@ -50,6 +51,6 @@ export default function About() {
           ))}
         </m.div>
       </Container>
-    </section>
+    </SectionFrame>
   )
 }

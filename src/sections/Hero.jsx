@@ -5,14 +5,15 @@ import Container from '@/components/Container'
 import Button from '@/components/Button'
 import Magnetic from '@/components/Magnetic'
 import SectionDivider from '@/components/SectionDivider'
+import SectionFrame from '@/components/SectionFrame'
 import { fadeUp, stagger } from '@/animations/motion'
 import BioTypewriter from '@/components/BioTypewriter'
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative pt-24 sm:pt-28 pb-8 sm:pb-12">
+    <SectionFrame id="hero" className="relative pt-24 sm:pt-28 pb-8 sm:pb-12">
       <SectionDivider className="mb-10 sm:mb-12" />
-      <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-[38rem] bg-gradient-to-b from-indigo-500/8 via-fuchsia-500/5 to-transparent z-[-1]" />
 
       <Container className="relative">
         <div className="grid items-center gap-10 lg:grid-cols-12">
@@ -103,6 +104,6 @@ export default function Hero() {
         </div>
 
       </Container>
-    </section>
+    </SectionFrame>
   )
 }

@@ -2,12 +2,13 @@ import { m } from 'framer-motion'
 import Container from '@/components/Container'
 import SectionHeading from '@/components/SectionHeading'
 import SectionDivider from '@/components/SectionDivider'
+import SectionFrame from '@/components/SectionFrame'
 import { SKILLS } from '@/utils/data'
 import { fadeUp, stagger } from '@/animations/motion'
 
 export default function Skills() {
   return (
-    <section id="skills" className="pt-20 sm:pt-24">
+    <SectionFrame id="skills" className="pt-20 sm:pt-24">
       <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading
@@ -43,6 +44,6 @@ export default function Skills() {
           ))}
         </m.div>
       </Container>
-    </section>
+    </SectionFrame>
   )
 }

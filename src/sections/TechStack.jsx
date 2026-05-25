@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from '@/components/Container'
+import SectionFrame from '@/components/SectionFrame'
 import { cn } from '@/utils/cn'
 
 import {
@@ -51,7 +52,7 @@ const COLUMNS = [
 
 export default function TechStack() {
   return (
-    <section id="tech-stack" className="pt-20 sm:pt-24 relative z-10">
+    <SectionFrame id="tech-stack" className="pt-20 sm:pt-24 relative z-10">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           {/* Left Column */}
@@ -102,6 +103,6 @@ export default function TechStack() {
           </div>
         </div>
       </Container>
-    </section>
+    </SectionFrame>
   )
 }

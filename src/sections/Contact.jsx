@@ -5,11 +5,12 @@ import SectionHeading from '@/components/SectionHeading'
 import GlassCard from '@/components/GlassCard'
 import Button from '@/components/Button'
 import SectionDivider from '@/components/SectionDivider'
+import SectionFrame from '@/components/SectionFrame'
 import { fadeUp } from '@/animations/motion'
 
 export default function Contact() {
   return (
-    <section id="contact" className="pt-20 pb-20 sm:pt-24 sm:pb-24">
+    <SectionFrame id="contact" className="pt-20 pb-20 sm:pt-24 sm:pb-24">
       <SectionDivider className="mb-10 sm:mb-12" />
       <Container>
         <SectionHeading
@@ -76,6 +77,6 @@ export default function Contact() {
           </GlassCard>
         </m.div>
       </Container>
-    </section>
+    </SectionFrame>
   )
 }
