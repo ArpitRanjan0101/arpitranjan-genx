@@ -5,6 +5,7 @@ import { useSectionSpy } from '@/hooks/useSectionSpy'
 import Shell from '@/layouts/Shell'
 import Home from '@/pages/Home'
 import NonTechnicalSkills from '@/pages/NonTechnicalSkills'
+import CursorCat from '@/components/CursorCat'
 
 // Custom event to trigger navigation from anywhere
 export const navigate = (path) => {
@@ -33,6 +34,7 @@ export default function App() {
 
   return (
     <LazyMotion features={domAnimation}>
+      <CursorCat />
       <Shell activeId={currentPath === '/' ? activeId : ''} ready={ready} onReady={() => setReady(true)}>
         {currentPath === '/non-technical-skills' ? <NonTechnicalSkills /> : <Home />}
       </Shell>
