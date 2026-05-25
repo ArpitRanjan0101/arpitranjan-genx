@@ -40,7 +40,7 @@ export default function Hero() {
                 Entrepreneur and Chief Operating Officer at Triostack Technologies, driving product execution, technology strategy, and operational scale. As a hands-on full-stack engineer and executive, I bridge the gap between business objectives and technical deployment.
               </p>
               <p>
-                Currently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Blockchain, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.
+                Currently architecting intelligent, production-ready solutions at the intersection of Agentic AI, Generative AI, and cloud infrastructure. Open to collaborating with founders, engineers, and visionaries building the future of scalable technology.
               </p>
             </m.div>
 
