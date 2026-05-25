@@ -42,10 +42,12 @@ function Cloud({ icons, radius = 3 }) {
           <group key={i} position={item.position}>
             <Html center transform sprite>
               <div 
-                className="group flex items-center justify-center w-14 h-14 rounded-full bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md opacity-80 hover:opacity-100 hover:bg-white/10 hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="group flex items-center justify-center transition-all duration-300 hover:scale-125 cursor-pointer"
                 title={item.name}
               >
-                <Icon size={26} color={item.color} style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.2))' }} />
+                {/* Soft glow behind the icon that only appears on hover or is very subtle */}
+                <div className="absolute inset-0 bg-white/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Icon size={32} color={item.color} style={{ filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.15))' }} />
               </div>
             </Html>
           </group>
