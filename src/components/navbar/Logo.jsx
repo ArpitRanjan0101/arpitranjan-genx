@@ -47,10 +47,8 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
         >
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-35 blur-[0.5px] [mask-image:linear-gradient(180deg,transparent,black_18%,black_82%,transparent)] animate-shimmer" />
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 blur-[1.25px] [mask-image:linear-gradient(180deg,transparent,black_26%,black_70%,transparent)] animate-shimmer" />
           <span
-            className="absolute inset-0 bg-clip-text text-transparent [-webkit-background-clip:text]"
+            className="absolute inset-0 bg-clip-text text-transparent [-webkit-background-clip:text] animate-shimmer"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.9), rgba(255,255,255,0))',
