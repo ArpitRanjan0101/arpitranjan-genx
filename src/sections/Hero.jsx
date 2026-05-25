@@ -22,7 +22,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 rounded-full bg-white/6 px-4 py-2 text-xs text-zinc-300 ring-1 ring-white/10"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
-              m² | Mehnat and manifestation
+              M² | Mehnat and manifestation
             </m.div>
 
             <m.h1
