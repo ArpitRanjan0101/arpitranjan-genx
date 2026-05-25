@@ -27,7 +27,7 @@ export default function Hero() {
 
             <m.h1
               variants={fadeUp}
-              className="mt-6 text-4xl font-extrabold tracking-tighter leading-[1.05] text-zinc-50 sm:text-5xl lg:text-[4rem]"
+              className="mt-6 text-4xl font-bold tracking-tighter leading-[1.05] text-zinc-50 sm:text-5xl lg:text-[4rem]"
             >
               <span className="block">Decouple Everything.</span>
               <span className="block">Reliability</span>
