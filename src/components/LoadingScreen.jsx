@@ -14,7 +14,13 @@ export default function LoadingScreen({ onDone }) {
     
     // Cycle to a new greeting every 850ms
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % greetings.length)
+      setIndex((prev) => {
+        if (prev >= greetings.length - 1) {
+          clearInterval(interval)
+          return prev
+        }
+        return prev + 1
+      })
     }, 850)
     
     return () => clearInterval(interval)
