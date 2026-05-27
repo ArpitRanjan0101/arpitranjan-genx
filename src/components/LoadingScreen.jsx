@@ -2,21 +2,20 @@ import { m, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 const greetings = [
-  "Hello", "Welcome", "Namaste", "Jai Shree Ram", "Radhe Radhe", "Salam"
+  "Hello", "Welcome", "Namaste", "Jai Shree Ram", "Radhe Radhe", "Salam", "Sat Sri Akal"
 ]
 
 export default function LoadingScreen({ onDone }) {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    // Start with a random language
-    const startIdx = Math.floor(Math.random() * greetings.length)
-    setIndex(startIdx)
+    // Start from the beginning to ensure all are shown
+    setIndex(0)
     
-    // Cycle to a new greeting every 700ms
+    // Cycle to a new greeting every 850ms
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % greetings.length)
-    }, 700)
+    }, 850)
     
     return () => clearInterval(interval)
   }, [])
@@ -52,7 +51,7 @@ export default function LoadingScreen({ onDone }) {
             className="h-1 w-full origin-left bg-white"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 3.5, ease: "easeInOut" }}
+            transition={{ duration: 6.0, ease: "easeInOut" }}
             onAnimationComplete={onDone}
           />
         </div>
