@@ -41,7 +41,7 @@ export default function Navbar({ activeId }) {
 
   return (
     <m.header
-      className="pointer-events-none fixed inset-x-0 top-4 z-[9999] flex justify-center px-4"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[9999]"
       style={{ zIndex: 9999 }}
       animate={open || !hidden ? 'show' : 'hide'}
       variants={{
@@ -50,22 +50,26 @@ export default function Navbar({ activeId }) {
       }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
     >
-      <div className="pointer-events-auto flex items-center justify-between gap-4 md:gap-8 px-4 py-2 bg-[#111111]/80 ring-1 ring-white/10 backdrop-blur-xl rounded-full shadow-2xl">
-        <button
-          type="button"
-          onClick={() => {
-            navigate('/')
-            setTimeout(() => scrollToId('hero'), 0)
-          }}
-          className="inline-flex items-center gap-2 rounded-full px-2 py-1 transition hover:text-zinc-50 focus-visible:outline-none"
-          aria-label="Go to top"
-        >
-          <Logo />
-        </button>
+      <Container className="pointer-events-auto">
+        <div className="pt-4">
+          <div
+            className="relative flex items-center justify-between px-2 py-3 md:px-0"
+          >
+            <button
+              type="button"
+              onClick={() => {
+                navigate('/')
+                setTimeout(() => scrollToId('hero'), 0)
+              }}
+              className="inline-flex items-center rounded-xl px-2 py-2 text-zinc-100/90 transition hover:text-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/15"
+              aria-label="Go to top"
+            >
+              <Logo />
+            </button>
 
-        <div className="hidden items-center justify-center gap-4 md:flex">
-          <nav className="flex items-center gap-1">
-            {items.map((it) => (
+            <div className="hidden flex-1 items-center justify-center gap-6 md:flex">
+              <nav className="flex items-center gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10 backdrop-blur">
+                {items.map((it) => (
                   <button
                     key={it.id}
                     type="button"
@@ -103,35 +107,40 @@ export default function Navbar({ activeId }) {
                     )}
                   </button>
                 ))}
-          </nav>
+              </nav>
 
-          <div className="w-px h-6 bg-white/10 mx-1" aria-hidden="true" />
+              <div className="flex items-center rounded-full bg-white/5 p-[6px] ring-1 ring-white/10 backdrop-blur">
+                {socials.map((s, idx) => {
+                  const Icon = s.icon
+                  return (
+                    <React.Fragment key={s.label}>
+                      {idx ? (
+                        <span
+                          className="mx-1 h-6 w-px rounded-full bg-white/10"
+                          aria-hidden="true"
+                        />
+                      ) : null}
+                      <a
+                        href={s.href}
+                        onClick={s.isInternal ? (e) => { e.preventDefault(); navigate(s.href); } : undefined}
+                        target={!s.isInternal && s.href.startsWith('http') ? '_blank' : undefined}
+                        rel={!s.isInternal && s.href.startsWith('http') ? 'noreferrer' : undefined}
+                        className="group relative grid h-8 w-8 place-items-center rounded-full bg-white/[0.04] text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-50"
+                        aria-label={s.label}
+                      >
+                        <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
+                        <span className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-200 opacity-0 transition-opacity group-hover:opacity-100 ring-1 ring-white/10">
+                          {s.label}
+                        </span>
+                      </a>
+                    </React.Fragment>
+                  )
+                })}
+              </div>
+            </div>
 
-          <div className="flex items-center">
-            {socials.map((s, idx) => {
-              const Icon = s.icon
-              return (
-                <React.Fragment key={s.label}>
-                  <a
-                    href={s.href}
-                    onClick={s.isInternal ? (e) => { e.preventDefault(); navigate(s.href); } : undefined}
-                    target={!s.isInternal && s.href.startsWith('http') ? '_blank' : undefined}
-                    rel={!s.isInternal && s.href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="group relative grid h-9 w-9 place-items-center rounded-full text-zinc-300 transition hover:bg-white/10 hover:text-zinc-50"
-                    aria-label={s.label}
-                  >
-                    <Icon className="text-[18px] opacity-90 transition group-hover:opacity-100" />
-                    <span className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-200 opacity-0 transition-opacity group-hover:opacity-100 ring-1 ring-white/10">
-                      {s.label}
-                    </span>
-                  </a>
-                </React.Fragment>
-              )
-            })}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2 md:hidden">
+            <div className="flex items-center gap-2">
+              <div className="hidden w-11 md:block" />
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
@@ -178,7 +187,9 @@ export default function Navbar({ activeId }) {
                 </m.div>
               ) : null}
             </AnimatePresence>
-      </div>
+          </div>
+        </div>
+      </Container>
     </m.header>
   )
 }
