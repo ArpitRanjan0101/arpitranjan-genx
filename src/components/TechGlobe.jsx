@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Html, TrackballControls } from '@react-three/drei'
 
-function Cloud({ icons, radius = 3.5 }) {
+function Cloud({ icons, radius = 4.2 }) {
   const groupRef = useRef()
 
   // Generate spherical coordinates using Fibonacci sphere algorithm
@@ -47,7 +47,7 @@ function Cloud({ icons, radius = 3.5 }) {
                 className="flex items-center justify-center transition-transform duration-300 hover:scale-110 cursor-pointer"
                 title={item.name}
               >
-                <Icon size={24} color={item.color} style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.5))' }} />
+                <Icon size={30} color={item.color} style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.5))' }} />
               </div>
             </Html>
           </group>
