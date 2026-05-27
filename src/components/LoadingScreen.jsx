@@ -12,7 +12,7 @@ export default function LoadingScreen({ onDone }) {
     // Start from the beginning to ensure all are shown
     setIndex(0)
     
-    // Cycle to a new greeting every 850ms
+    // Cycle to a new greeting every 1200ms for a more deliberate, professional pace
     const interval = setInterval(() => {
       setIndex((prev) => {
         if (prev >= greetings.length - 1) {
@@ -21,7 +21,7 @@ export default function LoadingScreen({ onDone }) {
         }
         return prev + 1
       })
-    }, 850)
+    }, 1200)
     
     return () => clearInterval(interval)
   }, [])
@@ -43,7 +43,7 @@ export default function LoadingScreen({ onDone }) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.4 }}
               className="text-5xl sm:text-6xl font-medium tracking-tight text-white font-caveat"
             >
               {greetings[index]}
@@ -57,7 +57,7 @@ export default function LoadingScreen({ onDone }) {
             className="h-1 w-full origin-left bg-white"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 6.0, ease: "easeInOut" }}
+            transition={{ duration: 8.5, ease: "easeInOut" }}
             onAnimationComplete={onDone}
           />
         </div>
