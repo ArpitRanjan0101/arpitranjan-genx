@@ -57,7 +57,7 @@ export default function LoadingScreen({ onDone }) {
             className="h-1 w-full origin-left bg-white"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 7.2, ease: "easeInOut" }}
+            transition={{ duration: 8.5, ease: "easeInOut" }}
             onAnimationComplete={onDone}
           />
         </div>
