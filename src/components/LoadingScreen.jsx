@@ -36,15 +36,15 @@ export default function LoadingScreen({ onDone }) {
       <div className="w-full max-w-sm px-6 flex flex-col items-center text-center">
         
         {/* Greeting Text */}
-        <div className="h-20 flex items-center justify-center">
-          <AnimatePresence mode="wait">
+        <div className="relative h-20 w-full flex items-center justify-center">
+          <AnimatePresence>
             <m.h2 
               key={index}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className="text-5xl sm:text-6xl font-medium tracking-tight text-white font-caveat"
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="absolute text-5xl sm:text-6xl font-medium tracking-tight text-white font-caveat"
             >
               {greetings[index]}
             </m.h2>
