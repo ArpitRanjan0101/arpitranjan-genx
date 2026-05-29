@@ -19,17 +19,19 @@ export default function BackgroundParticles() {
 
     const initStars = () => {
       const area = window.innerWidth * window.innerHeight
-      const numStars = Math.floor(area / 2500)
+      // Increase density slightly
+      const numStars = Math.floor(area / 2000)
 
       stars = Array.from({ length: numStars }).map(() => ({
         x: Math.random(),
         y: Math.random(),
-        r: 0.5 + Math.random() * 1.2,
+        // Much larger stars so they are easily visible (2px to 4px diameter)
+        r: 1.0 + Math.random() * 1.5,
         a: Math.random(),
-        baseAlpha: 0.2 + Math.random() * 0.5,
-        twinkleSpeed: 0.002 + Math.random() * 0.008,
+        // Faster twinkle speed (0.01 to 0.04 per frame -> ~0.6 to 2.4 alpha per second)
+        twinkleSpeed: 0.01 + Math.random() * 0.03,
         twinkleDir: Math.random() > 0.5 ? 1 : -1,
-        scrollSpeed: 0.2 + Math.random() * 0.5, // Parallax scroll speed
+        scrollSpeed: 0.1 + Math.random() * 0.5, // Parallax scroll speed
       }))
     }
 
@@ -53,18 +55,17 @@ export default function BackgroundParticles() {
       ctx.clearRect(0, 0, w, h)
       
       for (const s of stars) {
-        // Twinkle logic
+        // Obvious twinkle logic from 0.1 to 1.0
         s.a += s.twinkleSpeed * s.twinkleDir
-        if (s.a > s.baseAlpha + 0.3) {
-          s.a = s.baseAlpha + 0.3
+        if (s.a >= 1) {
+          s.a = 1
           s.twinkleDir = -1
-        } else if (s.a < s.baseAlpha - 0.2) {
-          s.a = Math.max(0.05, s.baseAlpha - 0.2)
+        } else if (s.a <= 0.1) {
+          s.a = 0.1
           s.twinkleDir = 1
         }
 
         // Calculate Y position with parallax scroll
-        // This makes the stars move up as the user scrolls down, seamless wrapping
         let yPos = (s.y * h - scrollY * s.scrollSpeed) % h
         if (yPos < 0) yPos += h
 
@@ -91,6 +92,6 @@ export default function BackgroundParticles() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-80" aria-hidden />
+  return <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-100" aria-hidden />
 }
 

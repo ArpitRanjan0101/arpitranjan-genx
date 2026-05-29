@@ -15,7 +15,7 @@ export default function Footer({ quickLinks = [], socials = [], mapSrc = "", cop
   }
 
   return (
-    <footer className="border-t border-white/6 bg-slate-950 pt-16 pb-8">
+    <footer className="border-t border-white/6 pt-16 pb-8">
       <Container className="flex flex-col md:flex-row justify-between gap-12">
         {/* Left Section: Quick Links & Socials */}
         <div className="flex flex-col gap-8 md:w-1/2">
