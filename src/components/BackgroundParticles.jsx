@@ -15,20 +15,21 @@ export default function BackgroundParticles() {
     let raf = 0
     let stars = []
 
+    let scrollY = window.scrollY || 0
+
     const initStars = () => {
-      // Calculate number of stars based on screen area to ensure uniform distribution
       const area = window.innerWidth * window.innerHeight
-      const numStars = Math.floor(area / 2500) // Adjust density here
+      const numStars = Math.floor(area / 2500)
 
       stars = Array.from({ length: numStars }).map(() => ({
         x: Math.random(),
         y: Math.random(),
-        r: 0.5 + Math.random() * 1.2, // Slightly larger stars so they actually render
-        a: Math.random(), // Current alpha
-        baseAlpha: 0.2 + Math.random() * 0.5, // Base alpha around which it twinkles
-        twinkleSpeed: 0.002 + Math.random() * 0.008, // Very slow twinkling
+        r: 0.5 + Math.random() * 1.2,
+        a: Math.random(),
+        baseAlpha: 0.2 + Math.random() * 0.5,
+        twinkleSpeed: 0.002 + Math.random() * 0.008,
         twinkleDir: Math.random() > 0.5 ? 1 : -1,
-        vy: -(0.00002 + Math.random() * 0.00005), // Extremely slow upward drift
+        scrollSpeed: 0.2 + Math.random() * 0.5, // Parallax scroll speed
       }))
     }
 
@@ -41,8 +42,11 @@ export default function BackgroundParticles() {
       canvas.style.height = `${h}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       
-      // Re-initialize stars if window size changes drastically to maintain density
       initStars()
+    }
+
+    const onScroll = () => {
+      scrollY = window.scrollY
     }
 
     const tick = () => {
@@ -59,18 +63,15 @@ export default function BackgroundParticles() {
           s.twinkleDir = 1
         }
 
-        // Drift logic
-        s.y += s.vy
-        if (s.y < -0.01) {
-          s.y = 1.01
-          s.x = Math.random() // Randomize x position when wrapping around
-        }
+        // Calculate Y position with parallax scroll
+        // This makes the stars move up as the user scrolls down, seamless wrapping
+        let yPos = (s.y * h - scrollY * s.scrollSpeed) % h
+        if (yPos < 0) yPos += h
 
         const x = s.x * w
-        const y = s.y * h
         
         ctx.beginPath()
-        ctx.arc(x, y, s.r, 0, Math.PI * 2)
+        ctx.arc(x, yPos, s.r, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255, 255, 255, ${s.a})`
         ctx.fill()
       }
@@ -80,14 +81,16 @@ export default function BackgroundParticles() {
 
     resize()
     window.addEventListener('resize', resize, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
     raf = requestAnimationFrame(tick)
 
     return () => {
       window.removeEventListener('resize', resize)
+      window.removeEventListener('scroll', onScroll)
       cancelAnimationFrame(raf)
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-80" aria-hidden />
+  return <canvas ref={canvasRef} className="absolute inset-0 opacity-80" style={{ zIndex: -1 }} aria-hidden />
 }
 
