@@ -23,7 +23,7 @@ export default function BackgroundParticles() {
       stars = Array.from({ length: numStars }).map(() => ({
         x: Math.random(),
         y: Math.random(),
-        r: 0.1 + Math.random() * 0.7, // Very small stars
+        r: 0.5 + Math.random() * 1.2, // Slightly larger stars so they actually render
         a: Math.random(), // Current alpha
         baseAlpha: 0.2 + Math.random() * 0.5, // Base alpha around which it twinkles
         twinkleSpeed: 0.002 + Math.random() * 0.008, // Very slow twinkling
@@ -73,14 +73,6 @@ export default function BackgroundParticles() {
         ctx.arc(x, y, s.r, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255, 255, 255, ${s.a})`
         ctx.fill()
-        
-        // Optional: Add a subtle glow to slightly larger stars
-        if (s.r > 0.5 && s.a > 0.5) {
-          ctx.shadowBlur = Math.floor(s.r * 3)
-          ctx.shadowColor = 'rgba(255, 255, 255, 0.8)'
-        } else {
-          ctx.shadowBlur = 0
-        }
       }
       
       raf = requestAnimationFrame(tick)
