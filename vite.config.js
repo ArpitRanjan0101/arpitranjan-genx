@@ -13,10 +13,9 @@ export default defineConfig({
     host: true,
     port: 5173,
     strictPort: true,
-    watch:
-      process.env.CHOKIDAR_USEPOLLING === 'true' ||
-      process.env.USE_POLLING === 'true'
-        ? { usePolling: true, interval: 150 }
-        : undefined,
+    watch: {
+      usePolling: true,
+      interval: 100
+    },
   },
 })

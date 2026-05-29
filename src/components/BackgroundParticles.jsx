@@ -91,6 +91,6 @@ export default function BackgroundParticles() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 opacity-80" style={{ zIndex: -1 }} aria-hidden />
+  return <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-80" aria-hidden />
 }
 
