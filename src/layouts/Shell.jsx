@@ -21,7 +21,7 @@ const footerConfig = {
 
 export default function Shell({ children, activeId, ready, onReady }) {
   return (
-    <div className="min-h-dvh bg-slate-950 text-zinc-100 selection:bg-indigo-500/30 selection:text-zinc-50">
+    <div className="min-h-dvh text-zinc-100 selection:bg-indigo-500/30 selection:text-zinc-50">
       <Background />
       <div className="site-frame" aria-hidden="true">
         <div className="site-frame__line site-frame__line--l" />
