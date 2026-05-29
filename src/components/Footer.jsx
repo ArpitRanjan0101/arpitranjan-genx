@@ -21,7 +21,7 @@ export default function Footer({ quickLinks = [], socials = [], mapSrc = "", cop
         <div className="flex flex-col gap-8 md:w-1/2">
           <div>
             <h3 className="mb-4 text-lg font-medium text-zinc-100">Quick Links</h3>
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <ul className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <li key={link.id}>
                   <button
