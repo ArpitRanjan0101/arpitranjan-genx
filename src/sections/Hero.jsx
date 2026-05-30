@@ -63,19 +63,8 @@ export default function Hero() {
                   My Resume <FiArrowUpRight className="opacity-80" />
                 </Button>
               </Magnetic>
-              <Magnetic strength={0.3}>
-                <Button
-                  href="#contact"
-                  variant="ghost"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                >
-                  Contact Me
-                </Button>
-              </Magnetic>
             </m.div>
+
 
           </m.div>
 
