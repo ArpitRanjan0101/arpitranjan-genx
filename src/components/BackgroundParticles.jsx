@@ -25,11 +25,11 @@ export default function BackgroundParticles() {
       stars = Array.from({ length: numStars }).map(() => ({
         x: Math.random(),
         y: Math.random(),
-        // Much larger stars so they are easily visible (2px to 4px diameter)
-        r: 1.0 + Math.random() * 1.5,
-        a: Math.random(),
-        // Faster twinkle speed (0.01 to 0.04 per frame -> ~0.6 to 2.4 alpha per second)
-        twinkleSpeed: 0.01 + Math.random() * 0.03,
+        // Realistic star sizes (faded effect)
+        r: 0.5 + Math.random() * 1.0,
+        a: Math.random() * 0.6,
+        // Slower, subtle twinkle speed
+        twinkleSpeed: 0.002 + Math.random() * 0.006,
         twinkleDir: Math.random() > 0.5 ? 1 : -1,
         scrollSpeed: 0.1 + Math.random() * 0.5, // Parallax scroll speed
       }))
@@ -55,13 +55,14 @@ export default function BackgroundParticles() {
       ctx.clearRect(0, 0, w, h)
       
       for (const s of stars) {
-        // Obvious twinkle logic from 0.1 to 1.0
+        // Subtle, faded twinkle logic
         s.a += s.twinkleSpeed * s.twinkleDir
-        if (s.a >= 1) {
-          s.a = 1
+        const maxAlpha = 0.5 + (s.r * 0.1)
+        if (s.a >= maxAlpha) {
+          s.a = maxAlpha
           s.twinkleDir = -1
-        } else if (s.a <= 0.1) {
-          s.a = 0.1
+        } else if (s.a <= 0.05) {
+          s.a = 0.05
           s.twinkleDir = 1
         }
 
