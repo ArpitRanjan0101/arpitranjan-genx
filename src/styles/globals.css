@@ -103,7 +103,7 @@ body {
   top: 18px;
   bottom: 18px;
   width: 1px;
-  background: rgba(255, 255, 255, 0.08); /* faint static line always present */
+  background: rgba(255, 255, 255, 0.04); /* faint static line always present */
 }
 
 /* The bright effect that draws over the static line */
