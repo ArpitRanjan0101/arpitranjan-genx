@@ -161,19 +161,19 @@ export default function Navbar({ activeId }) {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={toggleFullScreen}
-                className="grid h-11 w-11 place-items-center rounded-xl bg-white/6 text-zinc-100 ring-1 ring-white/10 transition hover:bg-white/10"
-                aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
-              >
-                {isFullscreen ? <FiMinimize /> : <FiMaximize />}
-              </button>
-              <button
-                type="button"
                 onClick={() => setOpen((v) => !v)}
                 className="grid h-11 w-11 place-items-center rounded-xl bg-white/6 text-zinc-100 ring-1 ring-white/10 transition hover:bg-white/10 md:hidden"
                 aria-label={open ? 'Close menu' : 'Open menu'}
               >
                 {open ? <FiX /> : <FiMenu />}
+              </button>
+              <button
+                type="button"
+                onClick={toggleFullScreen}
+                className="grid h-11 w-11 place-items-center rounded-xl bg-white/6 text-zinc-100 ring-1 ring-white/10 transition hover:bg-white/10"
+                aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+              >
+                {isFullscreen ? <FiMinimize /> : <FiMaximize />}
               </button>
             </div>
 
