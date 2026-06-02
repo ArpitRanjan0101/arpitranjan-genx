@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { m, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
-import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX, FiAward } from 'react-icons/fi'
+import { FiGithub, FiHome, FiLinkedin, FiMail, FiMenu, FiX, FiAward, FiMaximize, FiMinimize } from 'react-icons/fi'
 import Container from '@/components/Container'
 import { NAV_ITEMS } from '@/utils/links'
 import { cn } from '@/utils/cn'
@@ -19,7 +19,26 @@ export default function Navbar({ activeId }) {
   const isDesktop = useMediaQuery('(min-width: 768px)')
   const [open, setOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
   const { scrollY } = useScroll()
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement)
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange)
+  }, [])
+
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => console.error(err))
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(err => console.error(err))
+      }
+    }
+  }
   const socials = useMemo(
     () => [
       { label: 'Non-Technical Skills', icon: FiAward, href: '/non-technical-skills', isInternal: true },
@@ -140,7 +159,14 @@ export default function Navbar({ activeId }) {
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="hidden w-11 md:block" />
+              <button
+                type="button"
+                onClick={toggleFullScreen}
+                className="grid h-11 w-11 place-items-center rounded-xl bg-white/6 text-zinc-100 ring-1 ring-white/10 transition hover:bg-white/10"
+                aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+              >
+                {isFullscreen ? <FiMinimize /> : <FiMaximize />}
+              </button>
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
