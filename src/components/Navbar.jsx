@@ -44,7 +44,7 @@ export default function Navbar({ activeId }) {
       { label: 'Non-Technical Skills', icon: FiAward, href: '/non-technical-skills', isInternal: true },
       { label: 'GitHub', icon: FiGithub, href: 'https://github.com/ArpitRanjan0101' },
       { label: 'LinkedIn', icon: FiLinkedin, href: 'https://www.linkedin.com/in/arpit-ranjan-b81b3b284/' },
-      { label: 'Email', icon: FiMail, href: 'mailto:arpitvijans1234@gmail.com' },
+      { label: 'Email', icon: FiMail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=arpitvijans1234@gmail.com' },
     ],
     []
   )
