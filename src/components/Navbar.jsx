@@ -42,9 +42,9 @@ export default function Navbar({ activeId }) {
   const socials = useMemo(
     () => [
       { label: 'Non-Technical Skills', icon: FiAward, href: '/non-technical-skills', isInternal: true },
-      { label: 'GitHub', icon: FiGithub, href: 'https://github.com/' },
-      { label: 'LinkedIn', icon: FiLinkedin, href: 'https://linkedin.com/' },
-      { label: 'Email', icon: FiMail, href: 'mailto:hello@example.com' },
+      { label: 'GitHub', icon: FiGithub, href: 'https://github.com/ArpitRanjan0101' },
+      { label: 'LinkedIn', icon: FiLinkedin, href: 'https://www.linkedin.com/in/arpit-ranjan-b81b3b284/' },
+      { label: 'Email', icon: FiMail, href: 'mailto:arpitvijans1234@gmail.com' },
     ],
     []
   )
