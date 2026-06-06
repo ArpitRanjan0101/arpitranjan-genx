@@ -95,7 +95,7 @@ export default function Footer({ quickLinks = [], socials = [], mapSrc = "", cop
           <div className="text-sm text-zinc-500">
             {copyrightText || (
               <>
-                <span className="text-zinc-300">Arpit Ranjan</span> — craft & motion.
+                <span className="text-zinc-300">Arpit Ranjan</span> — built with love.
               </>
             )}
           </div>
