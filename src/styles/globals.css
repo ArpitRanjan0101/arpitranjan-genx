@@ -75,6 +75,11 @@ body {
   }
 }
 
+@keyframes globeSpin {
+  from { transform: rotateX(12deg) rotateY(0deg); }
+  to   { transform: rotateX(12deg) rotateY(360deg); }
+}
+
 /* Decorative page frame (wraps content without affecting layout) */
 .site-frame {
   position: fixed;
