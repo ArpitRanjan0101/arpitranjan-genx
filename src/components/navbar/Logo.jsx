@@ -41,5 +41,3 @@ export default function Logo({ className, name = 'Arpit ranjan' }) {
         /&gt;
       </span>
     </m.span>
-  )
-}
