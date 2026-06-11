@@ -17,6 +17,24 @@ const METRICS = [
 
 const ROLES = ['Full-Stack Engineer', 'Agentic AI Builder', 'System Designer', 'COO']
 
+const roleChipVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: (i) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, delay: 0.5 + i * 0.08, ease: 'easeOut' },
+  }),
+}
+
+const metricVariant = {
+  hidden: { opacity: 0, y: 10 },
+  show: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: 0.7 + i * 0.1, ease: 'easeOut' },
+  }),
+}
+
 export default function Hero() {
   return (
     <section id="hero" className="relative pt-24 sm:pt-28">
@@ -34,7 +52,7 @@ export default function Hero() {
               {/* Status badge */}
               <m.div
                 variants={fadeUp}
-                className="inline-flex items-center gap-2.5 rounded-full bg-white/[0.06] px-4 py-1.5 text-xs ring-1 ring-white/10 backdrop-blur-sm"
+                className="inline-flex items-center gap-2.5 rounded-full bg-white/[0.06] px-4 py-1.5 text-xs ring-1 ring-white/10 backdrop-blur-sm hover:ring-white/20 transition-all hover:bg-white/[0.08]"
               >
                 <span className="relative flex h-2 w-2 shrink-0">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
@@ -51,20 +69,27 @@ export default function Hero() {
               >
                 <span className="block">Decouple Everything.</span>
                 <span className="block">Reliability</span>
-                <span className="block bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent pb-1">
+                <m.span
+                  className="block bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent pb-1"
+                  animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                >
                   Follows.
-                </span>
+                </m.span>
               </m.h1>
 
               {/* Role chips */}
               <m.div variants={fadeUp} className="mt-5 flex flex-wrap gap-2">
-                {ROLES.map((role) => (
-                  <span
+                {ROLES.map((role, i) => (
+                  <m.span
                     key={role}
-                    className="rounded-full bg-white/[0.05] px-3 py-1 text-[11px] font-medium text-zinc-400 ring-1 ring-white/[0.09]"
+                    variants={roleChipVariant}
+                    custom={i}
+                    className="rounded-full bg-white/[0.05] px-3 py-1 text-[11px] font-medium text-zinc-400 ring-1 ring-white/[0.09] hover:bg-white/[0.08] hover:ring-white/20 hover:text-zinc-200 transition-all cursor-default"
+                    whileHover={{ scale: 1.05 }}
                   >
                     {role}
-                  </span>
+                  </m.span>
                 ))}
               </m.div>
 
@@ -117,19 +142,23 @@ export default function Hero() {
 
               {/* Metrics strip */}
               <m.div
-                variants={fadeUp}
                 className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-white/[0.08] pt-6"
               >
                 {METRICS.map((metric, i) => (
-                  <React.Fragment key={metric.label}>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-lg font-bold text-zinc-100">{metric.value}</span>
-                      <span className="text-xs text-zinc-500">{metric.label}</span>
-                    </div>
-                    {i < METRICS.length - 1 && (
-                      <span className="hidden text-zinc-700 sm:inline" aria-hidden="true">·</span>
-                    )}
-                  </React.Fragment>
+                  <m.div
+                    key={metric.label}
+                    variants={metricVariant}
+                    custom={i}
+                    className="flex items-baseline gap-1.5 group"
+                  >
+                    <m.span
+                      className="text-lg font-bold text-zinc-100 group-hover:text-white transition"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      {metric.value}
+                    </m.span>
+                    <span className="text-xs text-zinc-500 group-hover:text-zinc-400 transition">{metric.label}</span>
+                  </m.div>
                 ))}
               </m.div>
             </m.div>
@@ -147,15 +176,19 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ delay: 1.3, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute -right-3 top-10 z-30 hidden lg:block"
+                whileHover={{ scale: 1.05, y: -6 }}
               >
-                <div className="rounded-xl bg-zinc-900/90 px-3 py-2.5 backdrop-blur-md ring-1 ring-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+                <div className="rounded-xl bg-zinc-900/90 px-3 py-2.5 backdrop-blur-md ring-1 ring-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:ring-white/20 transition-all">
                   <p className="text-[9px] font-semibold uppercase tracking-widest text-zinc-500">Stack Focus</p>
                   <p className="mt-1 text-xs font-semibold text-zinc-100">Agentic AI · LLMs</p>
                 </div>
               </m.div>
 
               {/* Photo card */}
-              <div className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow">
+              <m.div
+                className="relative overflow-hidden rounded-3xl bg-white/[0.04] ring-1 ring-white/10 shadow-glow hover:ring-white/20 transition-all hover:shadow-[0_0_40px_-8px_rgba(255,255,255,0.1)]"
+                whileHover={{ y: -4 }}
+              >
                 {/* Shimmer */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-white/3 to-transparent" />
                 <div className="absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]">
@@ -163,14 +196,16 @@ export default function Hero() {
                 </div>
 
                 {/* Corner brackets — indigo tinted */}
-                <div className="absolute top-5 left-5 h-14 w-14 border-t-2 border-l-2 border-indigo-400/40 rounded-tl z-20 pointer-events-none" />
-                <div className="absolute bottom-20 right-5 h-14 w-14 border-b-2 border-r-2 border-indigo-400/40 rounded-br z-20 pointer-events-none" />
+                <div className="absolute top-5 left-5 h-14 w-14 border-t-2 border-l-2 border-indigo-400/40 rounded-tl z-20 pointer-events-none hover:border-indigo-400/60 transition" />
+                <div className="absolute bottom-20 right-5 h-14 w-14 border-b-2 border-r-2 border-indigo-400/40 rounded-br z-20 pointer-events-none hover:border-indigo-400/60 transition" />
 
                 <div className="relative h-[28rem] sm:h-[34rem] lg:h-[42rem]">
-                  <div
+                  <m.div
                     className="hero-portrait absolute inset-0"
                     style={{ '--hero-portrait-url': "url('/images/hero-portrait.jpeg')" }}
                     aria-hidden="true"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
                 </div>
@@ -180,21 +215,25 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.0, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute bottom-5 left-5 right-5 z-30 flex items-center justify-between rounded-2xl bg-zinc-950/85 px-4 py-3.5 backdrop-blur-md ring-1 ring-white/10"
+                  className="absolute bottom-5 left-5 right-5 z-30 flex items-center justify-between rounded-2xl bg-zinc-950/85 px-4 py-3.5 backdrop-blur-md ring-1 ring-white/10 hover:ring-white/20 transition-all hover:bg-zinc-950/90"
+                  whileHover={{ y: -2 }}
                 >
                   <div>
                     <p className="text-sm font-semibold tracking-tight text-zinc-100">Arpit Ranjan</p>
                     <p className="mt-0.5 text-[11px] text-zinc-500">COO · Triostack Technologies</p>
                   </div>
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1.5 ring-1 ring-emerald-500/20">
+                  <m.div
+                    className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1.5 ring-1 ring-emerald-500/20 hover:ring-emerald-500/40 transition"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <span className="relative flex h-1.5 w-1.5 shrink-0">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                       <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-400" />
                     </span>
                     <span className="text-[10px] font-medium text-emerald-300">Open to Collaborate</span>
-                  </div>
+                  </m.div>
                 </m.div>
-              </div>
+              </m.div>
             </m.div>
 
           </div>
