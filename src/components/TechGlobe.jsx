@@ -7,11 +7,11 @@ export default function TechGlobe({ icons }) {
   const containerRef = useRef(null)
   const itemRefs     = useRef([])
 
-  const rot      = useRef({ x: -0.28, y: 0 })   // current sphere rotation
-  const vel      = useRef({ x: 0, y: AUTO_SPIN }) // angular velocity / inertia
+  const rot      = useRef({ x: -0.28, y: 0 })       // current sphere rotation
+  const vel      = useRef({ x: 0, y: AUTO_SPIN })   // angular velocity / inertia
+  const target   = useRef({ x: 0, y: AUTO_SPIN })   // desired idle velocity (hover steering)
   const dragging = useRef(false)
   const last     = useRef({ x: 0, y: 0 })
-  const pointers = useRef(0)
 
   const [radius, setRadius] = useState(190)
 
@@ -47,9 +47,9 @@ export default function TechGlobe({ icons }) {
     let raf
     const render = () => {
       if (!dragging.current) {
-        // Ease angular velocity back toward the idle auto-spin (inertia).
-        vel.current.x *= 0.94
-        vel.current.y = vel.current.y * 0.94 + AUTO_SPIN * 0.06
+        // Ease angular velocity toward the hover target (inertia + steering).
+        vel.current.x += (target.current.x - vel.current.x) * 0.05
+        vel.current.y += (target.current.y - vel.current.y) * 0.05
         rot.current.x += vel.current.x
         rot.current.y += vel.current.y
       }
@@ -71,12 +71,11 @@ export default function TechGlobe({ icons }) {
         const z2 = p.y * sinX + z1 * cosX
 
         const depth = (z2 + 1) / 2          // 0 (back) .. 1 (front)
-        const scale = 0.55 + depth * 0.65   // shrink at the back
+        const scale = 0.62 + depth * 0.7    // shrink at the back, pop at the front
         // 2D translate keeps every icon facing the camera → never mirrored.
         el.style.transform = `translate3d(${x1 * R}px, ${y2 * R}px, 0) translate(-50%, -50%) scale(${scale})`
-        el.style.opacity   = (0.28 + depth * 0.72).toFixed(3)
+        el.style.opacity   = (0.4 + depth * 0.6).toFixed(3)
         el.style.zIndex    = String(Math.round(depth * 100))
-        el.style.filter    = depth < 0.5 ? `blur(${((0.5 - depth) * 2).toFixed(2)}px)` : 'none'
       }
       raf = requestAnimationFrame(render)
     }
@@ -84,25 +83,37 @@ export default function TechGlobe({ icons }) {
     return () => cancelAnimationFrame(raf)
   }, [points, radius])
 
-  // ── Pointer drag (with inertia) ──
+  // ── Pointer drag (with inertia) + hover steering ──
   const onPointerDown = (e) => {
     dragging.current = true
-    pointers.current += 1
     last.current = { x: e.clientX, y: e.clientY }
     e.currentTarget.setPointerCapture?.(e.pointerId)
   }
   const onPointerMove = (e) => {
-    if (!dragging.current) return
-    const dx = e.clientX - last.current.x
-    const dy = e.clientY - last.current.y
-    last.current = { x: e.clientX, y: e.clientY }
-    rot.current.y += dx * 0.006
-    rot.current.x += -dy * 0.006
-    vel.current.y = dx * 0.006   // carry momentum on release
-    vel.current.x = -dy * 0.006
+    if (dragging.current) {
+      const dx = e.clientX - last.current.x
+      const dy = e.clientY - last.current.y
+      last.current = { x: e.clientX, y: e.clientY }
+      rot.current.y += dx * 0.006
+      rot.current.x += -dy * 0.006
+      vel.current.y = dx * 0.006   // carry momentum on release
+      vel.current.x = -dy * 0.006
+      return
+    }
+    // Not dragging: steer the spin toward the cursor position.
+    const rect = e.currentTarget.getBoundingClientRect()
+    const nx = (e.clientX - (rect.left + rect.width  / 2)) / (rect.width  / 2)
+    const ny = (e.clientY - (rect.top  + rect.height / 2)) / (rect.height / 2)
+    target.current.y = AUTO_SPIN + nx * 0.06
+    target.current.x = -ny * 0.05
   }
   const endDrag = (e) => {
     dragging.current = false
+    e.currentTarget.releasePointerCapture?.(e.pointerId)
+  }
+  const onLeave = (e) => {
+    dragging.current = false
+    target.current = { x: 0, y: AUTO_SPIN }   // resume gentle auto-spin
     e.currentTarget.releasePointerCapture?.(e.pointerId)
   }
 
@@ -112,7 +123,7 @@ export default function TechGlobe({ icons }) {
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
-      onPointerLeave={endDrag}
+      onPointerLeave={onLeave}
       className="relative h-[30rem] w-full flex items-center justify-center select-none touch-none cursor-grab active:cursor-grabbing"
     >
       {/* Ambient glow */}
